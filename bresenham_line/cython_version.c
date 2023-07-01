@@ -1845,7 +1845,7 @@ static int __pyx_f_14cython_version_fill_grid_with_bresenham_line(unsigned int _
  * 
  *     if x1 > x0:             # <<<<<<<<<<<<<<
  *         dx = x1 - x0
- *     else:
+ *         sx = 1
  */
   __pyx_t_1 = ((__pyx_v_x1 > __pyx_v_x0) != 0);
   if (__pyx_t_1) {
@@ -1854,157 +1854,111 @@ static int __pyx_f_14cython_version_fill_grid_with_bresenham_line(unsigned int _
  * 
  *     if x1 > x0:
  *         dx = x1 - x0             # <<<<<<<<<<<<<<
+ *         sx = 1
+ *     else:
+ */
+    __pyx_v_dx = (__pyx_v_x1 - __pyx_v_x0);
+
+    /* "cython_version.pyx":16
+ *     if x1 > x0:
+ *         dx = x1 - x0
+ *         sx = 1             # <<<<<<<<<<<<<<
  *     else:
  *         dx = x0 - x1
  */
-    __pyx_v_dx = (__pyx_v_x1 - __pyx_v_x0);
+    __pyx_v_sx = 1;
 
     /* "cython_version.pyx":14
  *     cdef int dx, dy
  * 
  *     if x1 > x0:             # <<<<<<<<<<<<<<
  *         dx = x1 - x0
- *     else:
+ *         sx = 1
  */
     goto __pyx_L3;
   }
 
-  /* "cython_version.pyx":17
- *         dx = x1 - x0
+  /* "cython_version.pyx":18
+ *         sx = 1
  *     else:
  *         dx = x0 - x1             # <<<<<<<<<<<<<<
+ *         sx = -1
  * 
- *     if x0 < x1:
  */
   /*else*/ {
     __pyx_v_dx = (__pyx_v_x0 - __pyx_v_x1);
-  }
-  __pyx_L3:;
-
-  /* "cython_version.pyx":19
- *         dx = x0 - x1
- * 
- *     if x0 < x1:             # <<<<<<<<<<<<<<
- *         sx = 1
- *     else:
- */
-  __pyx_t_1 = ((__pyx_v_x0 < __pyx_v_x1) != 0);
-  if (__pyx_t_1) {
-
-    /* "cython_version.pyx":20
- * 
- *     if x0 < x1:
- *         sx = 1             # <<<<<<<<<<<<<<
- *     else:
- *         sx = -1
- */
-    __pyx_v_sx = 1;
 
     /* "cython_version.pyx":19
+ *     else:
  *         dx = x0 - x1
- * 
- *     if x0 < x1:             # <<<<<<<<<<<<<<
- *         sx = 1
- *     else:
- */
-    goto __pyx_L4;
-  }
-
-  /* "cython_version.pyx":22
- *         sx = 1
- *     else:
  *         sx = -1             # <<<<<<<<<<<<<<
  * 
  *     if y1 > y0:
  */
-  /*else*/ {
     __pyx_v_sx = -1;
   }
-  __pyx_L4:;
+  __pyx_L3:;
 
-  /* "cython_version.pyx":24
+  /* "cython_version.pyx":21
  *         sx = -1
  * 
  *     if y1 > y0:             # <<<<<<<<<<<<<<
  *         dy = y0 - y1
- *     else:
+ *         sy = 1
  */
   __pyx_t_1 = ((__pyx_v_y1 > __pyx_v_y0) != 0);
   if (__pyx_t_1) {
 
-    /* "cython_version.pyx":25
+    /* "cython_version.pyx":22
  * 
  *     if y1 > y0:
  *         dy = y0 - y1             # <<<<<<<<<<<<<<
+ *         sy = 1
  *     else:
- *         dy = y1 - y0
  */
     __pyx_v_dy = (__pyx_v_y0 - __pyx_v_y1);
 
-    /* "cython_version.pyx":24
+    /* "cython_version.pyx":23
+ *     if y1 > y0:
+ *         dy = y0 - y1
+ *         sy = 1             # <<<<<<<<<<<<<<
+ *     else:
+ *         dy = y1 - y0
+ */
+    __pyx_v_sy = 1;
+
+    /* "cython_version.pyx":21
  *         sx = -1
  * 
  *     if y1 > y0:             # <<<<<<<<<<<<<<
  *         dy = y0 - y1
- *     else:
+ *         sy = 1
  */
-    goto __pyx_L5;
+    goto __pyx_L4;
   }
 
-  /* "cython_version.pyx":27
- *         dy = y0 - y1
+  /* "cython_version.pyx":25
+ *         sy = 1
  *     else:
  *         dy = y1 - y0             # <<<<<<<<<<<<<<
+ *         sy = -1
  * 
- *     if y0 < y1:
  */
   /*else*/ {
     __pyx_v_dy = (__pyx_v_y1 - __pyx_v_y0);
-  }
-  __pyx_L5:;
 
-  /* "cython_version.pyx":29
+    /* "cython_version.pyx":26
+ *     else:
  *         dy = y1 - y0
- * 
- *     if y0 < y1:             # <<<<<<<<<<<<<<
- *         sy = 1
- *     else:
- */
-  __pyx_t_1 = ((__pyx_v_y0 < __pyx_v_y1) != 0);
-  if (__pyx_t_1) {
-
-    /* "cython_version.pyx":30
- * 
- *     if y0 < y1:
- *         sy = 1             # <<<<<<<<<<<<<<
- *     else:
- *         sy = -1
- */
-    __pyx_v_sy = 1;
-
-    /* "cython_version.pyx":29
- *         dy = y1 - y0
- * 
- *     if y0 < y1:             # <<<<<<<<<<<<<<
- *         sy = 1
- *     else:
- */
-    goto __pyx_L6;
-  }
-
-  /* "cython_version.pyx":32
- *         sy = 1
- *     else:
  *         sy = -1             # <<<<<<<<<<<<<<
  * 
  *     error = dx + dy
  */
-  /*else*/ {
     __pyx_v_sy = -1;
   }
-  __pyx_L6:;
+  __pyx_L4:;
 
-  /* "cython_version.pyx":34
+  /* "cython_version.pyx":28
  *         sy = -1
  * 
  *     error = dx + dy             # <<<<<<<<<<<<<<
@@ -2013,7 +1967,7 @@ static int __pyx_f_14cython_version_fill_grid_with_bresenham_line(unsigned int _
  */
   __pyx_v_error = (__pyx_v_dx + __pyx_v_dy);
 
-  /* "cython_version.pyx":36
+  /* "cython_version.pyx":30
  *     error = dx + dy
  * 
  *     while True:             # <<<<<<<<<<<<<<
@@ -2022,7 +1976,7 @@ static int __pyx_f_14cython_version_fill_grid_with_bresenham_line(unsigned int _
  */
   while (1) {
 
-    /* "cython_version.pyx":37
+    /* "cython_version.pyx":31
  * 
  *     while True:
  *         grid[x0, y0] += 1             # <<<<<<<<<<<<<<
@@ -2033,7 +1987,7 @@ static int __pyx_f_14cython_version_fill_grid_with_bresenham_line(unsigned int _
     __pyx_t_3 = __pyx_v_y0;
     *__Pyx_BufPtrStrided2d(__pyx_t_5numpy_int32_t *, __pyx_pybuffernd_grid.rcbuffer->pybuffer.buf, __pyx_t_2, __pyx_pybuffernd_grid.diminfo[0].strides, __pyx_t_3, __pyx_pybuffernd_grid.diminfo[1].strides) += 1;
 
-    /* "cython_version.pyx":38
+    /* "cython_version.pyx":32
  *     while True:
  *         grid[x0, y0] += 1
  *         if (x0 == x1) and (y0 == y1):             # <<<<<<<<<<<<<<
@@ -2044,23 +1998,23 @@ static int __pyx_f_14cython_version_fill_grid_with_bresenham_line(unsigned int _
     if (__pyx_t_4) {
     } else {
       __pyx_t_1 = __pyx_t_4;
-      goto __pyx_L10_bool_binop_done;
+      goto __pyx_L8_bool_binop_done;
     }
     __pyx_t_4 = ((__pyx_v_y0 == __pyx_v_y1) != 0);
     __pyx_t_1 = __pyx_t_4;
-    __pyx_L10_bool_binop_done:;
+    __pyx_L8_bool_binop_done:;
     if (__pyx_t_1) {
 
-      /* "cython_version.pyx":39
+      /* "cython_version.pyx":33
  *         grid[x0, y0] += 1
  *         if (x0 == x1) and (y0 == y1):
  *             break             # <<<<<<<<<<<<<<
  *         e2 = 2 * error
  *         if e2 >= dy:
  */
-      goto __pyx_L8_break;
+      goto __pyx_L6_break;
 
-      /* "cython_version.pyx":38
+      /* "cython_version.pyx":32
  *     while True:
  *         grid[x0, y0] += 1
  *         if (x0 == x1) and (y0 == y1):             # <<<<<<<<<<<<<<
@@ -2069,7 +2023,7 @@ static int __pyx_f_14cython_version_fill_grid_with_bresenham_line(unsigned int _
  */
     }
 
-    /* "cython_version.pyx":40
+    /* "cython_version.pyx":34
  *         if (x0 == x1) and (y0 == y1):
  *             break
  *         e2 = 2 * error             # <<<<<<<<<<<<<<
@@ -2078,7 +2032,7 @@ static int __pyx_f_14cython_version_fill_grid_with_bresenham_line(unsigned int _
  */
     __pyx_v_e2 = (2 * __pyx_v_error);
 
-    /* "cython_version.pyx":41
+    /* "cython_version.pyx":35
  *             break
  *         e2 = 2 * error
  *         if e2 >= dy:             # <<<<<<<<<<<<<<
@@ -2088,7 +2042,7 @@ static int __pyx_f_14cython_version_fill_grid_with_bresenham_line(unsigned int _
     __pyx_t_1 = ((__pyx_v_e2 >= __pyx_v_dy) != 0);
     if (__pyx_t_1) {
 
-      /* "cython_version.pyx":42
+      /* "cython_version.pyx":36
  *         e2 = 2 * error
  *         if e2 >= dy:
  *             if x0 == x1:             # <<<<<<<<<<<<<<
@@ -2098,16 +2052,16 @@ static int __pyx_f_14cython_version_fill_grid_with_bresenham_line(unsigned int _
       __pyx_t_1 = ((__pyx_v_x0 == __pyx_v_x1) != 0);
       if (__pyx_t_1) {
 
-        /* "cython_version.pyx":43
+        /* "cython_version.pyx":37
  *         if e2 >= dy:
  *             if x0 == x1:
  *                 break             # <<<<<<<<<<<<<<
  *             error = error + dy
  *             x0 = x0 + sx
  */
-        goto __pyx_L8_break;
+        goto __pyx_L6_break;
 
-        /* "cython_version.pyx":42
+        /* "cython_version.pyx":36
  *         e2 = 2 * error
  *         if e2 >= dy:
  *             if x0 == x1:             # <<<<<<<<<<<<<<
@@ -2116,7 +2070,7 @@ static int __pyx_f_14cython_version_fill_grid_with_bresenham_line(unsigned int _
  */
       }
 
-      /* "cython_version.pyx":44
+      /* "cython_version.pyx":38
  *             if x0 == x1:
  *                 break
  *             error = error + dy             # <<<<<<<<<<<<<<
@@ -2125,7 +2079,7 @@ static int __pyx_f_14cython_version_fill_grid_with_bresenham_line(unsigned int _
  */
       __pyx_v_error = (__pyx_v_error + __pyx_v_dy);
 
-      /* "cython_version.pyx":45
+      /* "cython_version.pyx":39
  *                 break
  *             error = error + dy
  *             x0 = x0 + sx             # <<<<<<<<<<<<<<
@@ -2134,7 +2088,7 @@ static int __pyx_f_14cython_version_fill_grid_with_bresenham_line(unsigned int _
  */
       __pyx_v_x0 = (__pyx_v_x0 + __pyx_v_sx);
 
-      /* "cython_version.pyx":41
+      /* "cython_version.pyx":35
  *             break
  *         e2 = 2 * error
  *         if e2 >= dy:             # <<<<<<<<<<<<<<
@@ -2143,7 +2097,7 @@ static int __pyx_f_14cython_version_fill_grid_with_bresenham_line(unsigned int _
  */
     }
 
-    /* "cython_version.pyx":46
+    /* "cython_version.pyx":40
  *             error = error + dy
  *             x0 = x0 + sx
  *         if e2 <= dx:             # <<<<<<<<<<<<<<
@@ -2153,7 +2107,7 @@ static int __pyx_f_14cython_version_fill_grid_with_bresenham_line(unsigned int _
     __pyx_t_1 = ((__pyx_v_e2 <= __pyx_v_dx) != 0);
     if (__pyx_t_1) {
 
-      /* "cython_version.pyx":47
+      /* "cython_version.pyx":41
  *             x0 = x0 + sx
  *         if e2 <= dx:
  *             if y0 == y1:             # <<<<<<<<<<<<<<
@@ -2163,16 +2117,16 @@ static int __pyx_f_14cython_version_fill_grid_with_bresenham_line(unsigned int _
       __pyx_t_1 = ((__pyx_v_y0 == __pyx_v_y1) != 0);
       if (__pyx_t_1) {
 
-        /* "cython_version.pyx":48
+        /* "cython_version.pyx":42
  *         if e2 <= dx:
  *             if y0 == y1:
  *                 break             # <<<<<<<<<<<<<<
  *             error = error + dx
  *             y0 = y0 + sy
  */
-        goto __pyx_L8_break;
+        goto __pyx_L6_break;
 
-        /* "cython_version.pyx":47
+        /* "cython_version.pyx":41
  *             x0 = x0 + sx
  *         if e2 <= dx:
  *             if y0 == y1:             # <<<<<<<<<<<<<<
@@ -2181,7 +2135,7 @@ static int __pyx_f_14cython_version_fill_grid_with_bresenham_line(unsigned int _
  */
       }
 
-      /* "cython_version.pyx":49
+      /* "cython_version.pyx":43
  *             if y0 == y1:
  *                 break
  *             error = error + dx             # <<<<<<<<<<<<<<
@@ -2190,7 +2144,7 @@ static int __pyx_f_14cython_version_fill_grid_with_bresenham_line(unsigned int _
  */
       __pyx_v_error = (__pyx_v_error + __pyx_v_dx);
 
-      /* "cython_version.pyx":50
+      /* "cython_version.pyx":44
  *                 break
  *             error = error + dx
  *             y0 = y0 + sy             # <<<<<<<<<<<<<<
@@ -2199,7 +2153,7 @@ static int __pyx_f_14cython_version_fill_grid_with_bresenham_line(unsigned int _
  */
       __pyx_v_y0 = (__pyx_v_y0 + __pyx_v_sy);
 
-      /* "cython_version.pyx":46
+      /* "cython_version.pyx":40
  *             error = error + dy
  *             x0 = x0 + sx
  *         if e2 <= dx:             # <<<<<<<<<<<<<<
@@ -2208,9 +2162,9 @@ static int __pyx_f_14cython_version_fill_grid_with_bresenham_line(unsigned int _
  */
     }
   }
-  __pyx_L8_break:;
+  __pyx_L6_break:;
 
-  /* "cython_version.pyx":52
+  /* "cython_version.pyx":46
  *             y0 = y0 + sy
  * 
  *     return 0             # <<<<<<<<<<<<<<
@@ -2246,7 +2200,7 @@ static int __pyx_f_14cython_version_fill_grid_with_bresenham_line(unsigned int _
   return __pyx_r;
 }
 
-/* "cython_version.pyx":56
+/* "cython_version.pyx":50
  * 
  * 
  * def fill_grid_with_bresenham_lines(np.ndarray[np.int32_t, ndim=2] start_points,             # <<<<<<<<<<<<<<
@@ -2292,17 +2246,17 @@ static PyObject *__pyx_pw_14cython_version_1fill_grid_with_bresenham_lines(PyObj
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_end_points)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("fill_grid_with_bresenham_lines", 1, 3, 3, 1); __PYX_ERR(0, 56, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("fill_grid_with_bresenham_lines", 1, 3, 3, 1); __PYX_ERR(0, 50, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
         if (likely((values[2] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_grid)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("fill_grid_with_bresenham_lines", 1, 3, 3, 2); __PYX_ERR(0, 56, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("fill_grid_with_bresenham_lines", 1, 3, 3, 2); __PYX_ERR(0, 50, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "fill_grid_with_bresenham_lines") < 0)) __PYX_ERR(0, 56, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "fill_grid_with_bresenham_lines") < 0)) __PYX_ERR(0, 50, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 3) {
       goto __pyx_L5_argtuple_error;
@@ -2317,15 +2271,15 @@ static PyObject *__pyx_pw_14cython_version_1fill_grid_with_bresenham_lines(PyObj
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("fill_grid_with_bresenham_lines", 1, 3, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 56, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("fill_grid_with_bresenham_lines", 1, 3, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 50, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("cython_version.fill_grid_with_bresenham_lines", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_start_points), __pyx_ptype_5numpy_ndarray, 1, "start_points", 0))) __PYX_ERR(0, 56, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_end_points), __pyx_ptype_5numpy_ndarray, 1, "end_points", 0))) __PYX_ERR(0, 57, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_grid), __pyx_ptype_5numpy_ndarray, 1, "grid", 0))) __PYX_ERR(0, 58, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_start_points), __pyx_ptype_5numpy_ndarray, 1, "start_points", 0))) __PYX_ERR(0, 50, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_end_points), __pyx_ptype_5numpy_ndarray, 1, "end_points", 0))) __PYX_ERR(0, 51, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_grid), __pyx_ptype_5numpy_ndarray, 1, "grid", 0))) __PYX_ERR(0, 52, __pyx_L1_error)
   __pyx_r = __pyx_pf_14cython_version_fill_grid_with_bresenham_lines(__pyx_self, __pyx_v_start_points, __pyx_v_end_points, __pyx_v_grid);
 
   /* function exit code */
@@ -2376,21 +2330,21 @@ static PyObject *__pyx_pf_14cython_version_fill_grid_with_bresenham_lines(CYTHON
   __pyx_pybuffernd_grid.rcbuffer = &__pyx_pybuffer_grid;
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_start_points.rcbuffer->pybuffer, (PyObject*)__pyx_v_start_points, &__Pyx_TypeInfo_nn___pyx_t_5numpy_int32_t, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) __PYX_ERR(0, 56, __pyx_L1_error)
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_start_points.rcbuffer->pybuffer, (PyObject*)__pyx_v_start_points, &__Pyx_TypeInfo_nn___pyx_t_5numpy_int32_t, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) __PYX_ERR(0, 50, __pyx_L1_error)
   }
   __pyx_pybuffernd_start_points.diminfo[0].strides = __pyx_pybuffernd_start_points.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_start_points.diminfo[0].shape = __pyx_pybuffernd_start_points.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_start_points.diminfo[1].strides = __pyx_pybuffernd_start_points.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_start_points.diminfo[1].shape = __pyx_pybuffernd_start_points.rcbuffer->pybuffer.shape[1];
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_end_points.rcbuffer->pybuffer, (PyObject*)__pyx_v_end_points, &__Pyx_TypeInfo_nn___pyx_t_5numpy_int32_t, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) __PYX_ERR(0, 56, __pyx_L1_error)
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_end_points.rcbuffer->pybuffer, (PyObject*)__pyx_v_end_points, &__Pyx_TypeInfo_nn___pyx_t_5numpy_int32_t, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) __PYX_ERR(0, 50, __pyx_L1_error)
   }
   __pyx_pybuffernd_end_points.diminfo[0].strides = __pyx_pybuffernd_end_points.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_end_points.diminfo[0].shape = __pyx_pybuffernd_end_points.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_end_points.diminfo[1].strides = __pyx_pybuffernd_end_points.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_end_points.diminfo[1].shape = __pyx_pybuffernd_end_points.rcbuffer->pybuffer.shape[1];
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_grid.rcbuffer->pybuffer, (PyObject*)__pyx_v_grid, &__Pyx_TypeInfo_nn___pyx_t_5numpy_int32_t, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) __PYX_ERR(0, 56, __pyx_L1_error)
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_grid.rcbuffer->pybuffer, (PyObject*)__pyx_v_grid, &__Pyx_TypeInfo_nn___pyx_t_5numpy_int32_t, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) __PYX_ERR(0, 50, __pyx_L1_error)
   }
   __pyx_pybuffernd_grid.diminfo[0].strides = __pyx_pybuffernd_grid.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_grid.diminfo[0].shape = __pyx_pybuffernd_grid.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_grid.diminfo[1].strides = __pyx_pybuffernd_grid.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_grid.diminfo[1].shape = __pyx_pybuffernd_grid.rcbuffer->pybuffer.shape[1];
 
-  /* "cython_version.pyx":62
+  /* "cython_version.pyx":56
  *     cdef int x0, y0, x1, y1
  * 
  *     nrows = start_points.shape[0]             # <<<<<<<<<<<<<<
@@ -2399,7 +2353,7 @@ static PyObject *__pyx_pf_14cython_version_fill_grid_with_bresenham_lines(CYTHON
  */
   __pyx_v_nrows = (__pyx_v_start_points->dimensions[0]);
 
-  /* "cython_version.pyx":64
+  /* "cython_version.pyx":58
  *     nrows = start_points.shape[0]
  * 
  *     for k in range(nrows):             # <<<<<<<<<<<<<<
@@ -2411,7 +2365,7 @@ static PyObject *__pyx_pf_14cython_version_fill_grid_with_bresenham_lines(CYTHON
   for (__pyx_t_3 = 0; __pyx_t_3 < __pyx_t_2; __pyx_t_3+=1) {
     __pyx_v_k = __pyx_t_3;
 
-    /* "cython_version.pyx":65
+    /* "cython_version.pyx":59
  * 
  *     for k in range(nrows):
  *         x0 = start_points[k, 0]             # <<<<<<<<<<<<<<
@@ -2428,11 +2382,11 @@ static PyObject *__pyx_pf_14cython_version_fill_grid_with_bresenham_lines(CYTHON
     } else if (unlikely(__pyx_t_5 >= __pyx_pybuffernd_start_points.diminfo[1].shape)) __pyx_t_6 = 1;
     if (unlikely(__pyx_t_6 != -1)) {
       __Pyx_RaiseBufferIndexError(__pyx_t_6);
-      __PYX_ERR(0, 65, __pyx_L1_error)
+      __PYX_ERR(0, 59, __pyx_L1_error)
     }
     __pyx_v_x0 = (*__Pyx_BufPtrStrided2d(__pyx_t_5numpy_int32_t *, __pyx_pybuffernd_start_points.rcbuffer->pybuffer.buf, __pyx_t_4, __pyx_pybuffernd_start_points.diminfo[0].strides, __pyx_t_5, __pyx_pybuffernd_start_points.diminfo[1].strides));
 
-    /* "cython_version.pyx":66
+    /* "cython_version.pyx":60
  *     for k in range(nrows):
  *         x0 = start_points[k, 0]
  *         y0 = start_points[k, 1]             # <<<<<<<<<<<<<<
@@ -2449,11 +2403,11 @@ static PyObject *__pyx_pf_14cython_version_fill_grid_with_bresenham_lines(CYTHON
     } else if (unlikely(__pyx_t_5 >= __pyx_pybuffernd_start_points.diminfo[1].shape)) __pyx_t_6 = 1;
     if (unlikely(__pyx_t_6 != -1)) {
       __Pyx_RaiseBufferIndexError(__pyx_t_6);
-      __PYX_ERR(0, 66, __pyx_L1_error)
+      __PYX_ERR(0, 60, __pyx_L1_error)
     }
     __pyx_v_y0 = (*__Pyx_BufPtrStrided2d(__pyx_t_5numpy_int32_t *, __pyx_pybuffernd_start_points.rcbuffer->pybuffer.buf, __pyx_t_4, __pyx_pybuffernd_start_points.diminfo[0].strides, __pyx_t_5, __pyx_pybuffernd_start_points.diminfo[1].strides));
 
-    /* "cython_version.pyx":67
+    /* "cython_version.pyx":61
  *         x0 = start_points[k, 0]
  *         y0 = start_points[k, 1]
  *         x1 = end_points[k, 0]             # <<<<<<<<<<<<<<
@@ -2470,11 +2424,11 @@ static PyObject *__pyx_pf_14cython_version_fill_grid_with_bresenham_lines(CYTHON
     } else if (unlikely(__pyx_t_5 >= __pyx_pybuffernd_end_points.diminfo[1].shape)) __pyx_t_6 = 1;
     if (unlikely(__pyx_t_6 != -1)) {
       __Pyx_RaiseBufferIndexError(__pyx_t_6);
-      __PYX_ERR(0, 67, __pyx_L1_error)
+      __PYX_ERR(0, 61, __pyx_L1_error)
     }
     __pyx_v_x1 = (*__Pyx_BufPtrStrided2d(__pyx_t_5numpy_int32_t *, __pyx_pybuffernd_end_points.rcbuffer->pybuffer.buf, __pyx_t_4, __pyx_pybuffernd_end_points.diminfo[0].strides, __pyx_t_5, __pyx_pybuffernd_end_points.diminfo[1].strides));
 
-    /* "cython_version.pyx":68
+    /* "cython_version.pyx":62
  *         y0 = start_points[k, 1]
  *         x1 = end_points[k, 0]
  *         y1 = end_points[k, 1]             # <<<<<<<<<<<<<<
@@ -2490,11 +2444,11 @@ static PyObject *__pyx_pf_14cython_version_fill_grid_with_bresenham_lines(CYTHON
     } else if (unlikely(__pyx_t_5 >= __pyx_pybuffernd_end_points.diminfo[1].shape)) __pyx_t_6 = 1;
     if (unlikely(__pyx_t_6 != -1)) {
       __Pyx_RaiseBufferIndexError(__pyx_t_6);
-      __PYX_ERR(0, 68, __pyx_L1_error)
+      __PYX_ERR(0, 62, __pyx_L1_error)
     }
     __pyx_v_y1 = (*__Pyx_BufPtrStrided2d(__pyx_t_5numpy_int32_t *, __pyx_pybuffernd_end_points.rcbuffer->pybuffer.buf, __pyx_t_4, __pyx_pybuffernd_end_points.diminfo[0].strides, __pyx_t_5, __pyx_pybuffernd_end_points.diminfo[1].strides));
 
-    /* "cython_version.pyx":69
+    /* "cython_version.pyx":63
  *         x1 = end_points[k, 0]
  *         y1 = end_points[k, 1]
  *         fill_grid_with_bresenham_line(x0, y0, x1, y1, grid)             # <<<<<<<<<<<<<<
@@ -2502,7 +2456,7 @@ static PyObject *__pyx_pf_14cython_version_fill_grid_with_bresenham_lines(CYTHON
     (void)(__pyx_f_14cython_version_fill_grid_with_bresenham_line(__pyx_v_x0, __pyx_v_y0, __pyx_v_x1, __pyx_v_y1, ((PyArrayObject *)__pyx_v_grid)));
   }
 
-  /* "cython_version.pyx":56
+  /* "cython_version.pyx":50
  * 
  * 
  * def fill_grid_with_bresenham_lines(np.ndarray[np.int32_t, ndim=2] start_points,             # <<<<<<<<<<<<<<
@@ -3450,7 +3404,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {0, 0, 0, 0, 0, 0, 0}
 };
 static CYTHON_SMALL_CODE int __Pyx_InitCachedBuiltins(void) {
-  __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(0, 64, __pyx_L1_error)
+  __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(0, 58, __pyx_L1_error)
   __pyx_builtin_ImportError = __Pyx_GetBuiltinName(__pyx_n_s_ImportError); if (!__pyx_builtin_ImportError) __PYX_ERR(1, 884, __pyx_L1_error)
   return 0;
   __pyx_L1_error:;
@@ -3483,17 +3437,17 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__2);
   __Pyx_GIVEREF(__pyx_tuple__2);
 
-  /* "cython_version.pyx":56
+  /* "cython_version.pyx":50
  * 
  * 
  * def fill_grid_with_bresenham_lines(np.ndarray[np.int32_t, ndim=2] start_points,             # <<<<<<<<<<<<<<
  *                                    np.ndarray[np.int32_t, ndim=2] end_points,
  *                                    np.ndarray[np.int32_t, ndim=2] grid):
  */
-  __pyx_tuple__3 = PyTuple_Pack(9, __pyx_n_s_start_points, __pyx_n_s_end_points, __pyx_n_s_grid, __pyx_n_s_k, __pyx_n_s_nrows, __pyx_n_s_x0, __pyx_n_s_y0, __pyx_n_s_x1, __pyx_n_s_y1); if (unlikely(!__pyx_tuple__3)) __PYX_ERR(0, 56, __pyx_L1_error)
+  __pyx_tuple__3 = PyTuple_Pack(9, __pyx_n_s_start_points, __pyx_n_s_end_points, __pyx_n_s_grid, __pyx_n_s_k, __pyx_n_s_nrows, __pyx_n_s_x0, __pyx_n_s_y0, __pyx_n_s_x1, __pyx_n_s_y1); if (unlikely(!__pyx_tuple__3)) __PYX_ERR(0, 50, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__3);
   __Pyx_GIVEREF(__pyx_tuple__3);
-  __pyx_codeobj__4 = (PyObject*)__Pyx_PyCode_New(3, 0, 9, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__3, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_cython_version_pyx, __pyx_n_s_fill_grid_with_bresenham_lines, 56, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__4)) __PYX_ERR(0, 56, __pyx_L1_error)
+  __pyx_codeobj__4 = (PyObject*)__Pyx_PyCode_New(3, 0, 9, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__3, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_cython_version_pyx, __pyx_n_s_fill_grid_with_bresenham_lines, 50, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__4)) __PYX_ERR(0, 50, __pyx_L1_error)
   __Pyx_RefNannyFinishContext();
   return 0;
   __pyx_L1_error:;
@@ -3808,16 +3762,16 @@ if (!__Pyx_RefNanny) {
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_np, __pyx_t_1) < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "cython_version.pyx":56
+  /* "cython_version.pyx":50
  * 
  * 
  * def fill_grid_with_bresenham_lines(np.ndarray[np.int32_t, ndim=2] start_points,             # <<<<<<<<<<<<<<
  *                                    np.ndarray[np.int32_t, ndim=2] end_points,
  *                                    np.ndarray[np.int32_t, ndim=2] grid):
  */
-  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_14cython_version_1fill_grid_with_bresenham_lines, NULL, __pyx_n_s_cython_version); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 56, __pyx_L1_error)
+  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_14cython_version_1fill_grid_with_bresenham_lines, NULL, __pyx_n_s_cython_version); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 50, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_fill_grid_with_bresenham_lines, __pyx_t_1) < 0) __PYX_ERR(0, 56, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_fill_grid_with_bresenham_lines, __pyx_t_1) < 0) __PYX_ERR(0, 50, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
   /* "cython_version.pyx":1

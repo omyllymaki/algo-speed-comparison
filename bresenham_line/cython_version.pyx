@@ -13,22 +13,16 @@ cdef int fill_grid_with_bresenham_line(unsigned x0, unsigned y0,
 
     if x1 > x0:
         dx = x1 - x0
-    else:
-        dx = x0 - x1
-    
-    if x0 < x1:
         sx = 1
     else:
+        dx = x0 - x1
         sx = -1
     
     if y1 > y0:
         dy = y0 - y1
-    else:
-        dy = y1 - y0
-    
-    if y0 < y1:
         sy = 1
     else:
+        dy = y1 - y0
         sy = -1
 
     error = dx + dy

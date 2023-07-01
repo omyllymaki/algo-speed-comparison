@@ -26,10 +26,13 @@ def prepare_data(start_points, end_points, cell_size, min_xy=None, max_xy=None):
 
 def comparison():
     voxel_size = 1.5
-    n_lines = 5000
+    n_lines = 20000
 
     start_points = np.random.uniform(-100, 100, (n_lines, 2))
     end_points = np.random.uniform(-100, 100, (n_lines, 2))
+
+    np.savetxt("start_points.txt", start_points)
+    np.savetxt("end_points.txt", end_points)
 
     all_points = np.vstack((start_points, end_points))
     min_xy = np.min(all_points, axis=0)
@@ -40,6 +43,11 @@ def comparison():
                                                           voxel_size,
                                                           min_xy=min_xy,
                                                           max_xy=max_xy)
+
+    np.savetxt("start_points_int.txt", start_points_int)
+    np.savetxt("end_points_int.txt", end_points_int)
+
+    print(f"Grid size: {grid.shape}")
 
     methods = {
         "python": python_version.fill_grid_with_bresenham_lines,

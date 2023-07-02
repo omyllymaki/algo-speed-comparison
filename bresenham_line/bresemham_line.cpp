@@ -48,8 +48,7 @@ Eigen::MatrixXi rasterize_lines(const Eigen::MatrixX2i &start_points,
                                 const std::pair<size_t, size_t> &grid_dim)
 {
     size_t n_rows = start_points.rows();
-    Eigen::MatrixXi grid;
-    grid.resize(grid_dim.first, grid_dim.second);
+    Eigen::MatrixXi grid = Eigen::MatrixXi::Zero(grid_dim.first, grid_dim.second);
     for (size_t i = 0; i < n_rows; i++)
     {
         size_t x0 = start_points.coeff(i, 0);

@@ -20,5 +20,4 @@ include_directories(${EIGEN3_INCLUDE_DIR})
 
 add_executable (sample bresemham_line_sample.cpp bresemham_line.cpp)
 
-
-pybind11_add_module(example py_wrapper.cpp bresemham_line.cpp)
+pybind11_add_module(line_rasterization_module py_wrapper.cpp bresemham_line.cpp)

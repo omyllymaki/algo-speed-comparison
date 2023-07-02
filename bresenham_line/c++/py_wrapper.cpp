@@ -5,7 +5,6 @@
 
 namespace py = pybind11;
 
-PYBIND11_MODULE(example, m) {
-    m.doc() = "optional module docstring";
+PYBIND11_MODULE(line_rasterization_module, m) {
     m.def("rasterize_lines", &rasterize_lines, "A function that rasterizes the lines with Bresemham's line algorithm.");
 }

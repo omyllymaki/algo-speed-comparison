@@ -742,8 +742,8 @@ static CYTHON_INLINE float __PYX_NAN() {
   #endif
 #endif
 
-#define __PYX_HAVE__cython_version
-#define __PYX_HAVE_API__cython_version
+#define __PYX_HAVE__line_rasterization
+#define __PYX_HAVE_API__line_rasterization
 /* Early includes */
 #include <string.h>
 #include <stdio.h>
@@ -983,7 +983,7 @@ static const char *__pyx_filename;
 
 
 static const char *__pyx_f[] = {
-  "cython_version.pyx",
+  "line_rasterization.pyx",
   "__init__.pxd",
   "type.pxd",
 };
@@ -1024,7 +1024,7 @@ typedef struct {
 } __Pyx_BufFmt_Context;
 
 
-/* "../venv/lib/python3.6/site-packages/numpy/__init__.pxd":689
+/* "../../venv/lib/python3.6/site-packages/numpy/__init__.pxd":689
  * # in Cython to enable them only on the right systems.
  * 
  * ctypedef npy_int8       int8_t             # <<<<<<<<<<<<<<
@@ -1033,7 +1033,7 @@ typedef struct {
  */
 typedef npy_int8 __pyx_t_5numpy_int8_t;
 
-/* "../venv/lib/python3.6/site-packages/numpy/__init__.pxd":690
+/* "../../venv/lib/python3.6/site-packages/numpy/__init__.pxd":690
  * 
  * ctypedef npy_int8       int8_t
  * ctypedef npy_int16      int16_t             # <<<<<<<<<<<<<<
@@ -1042,7 +1042,7 @@ typedef npy_int8 __pyx_t_5numpy_int8_t;
  */
 typedef npy_int16 __pyx_t_5numpy_int16_t;
 
-/* "../venv/lib/python3.6/site-packages/numpy/__init__.pxd":691
+/* "../../venv/lib/python3.6/site-packages/numpy/__init__.pxd":691
  * ctypedef npy_int8       int8_t
  * ctypedef npy_int16      int16_t
  * ctypedef npy_int32      int32_t             # <<<<<<<<<<<<<<
@@ -1051,7 +1051,7 @@ typedef npy_int16 __pyx_t_5numpy_int16_t;
  */
 typedef npy_int32 __pyx_t_5numpy_int32_t;
 
-/* "../venv/lib/python3.6/site-packages/numpy/__init__.pxd":692
+/* "../../venv/lib/python3.6/site-packages/numpy/__init__.pxd":692
  * ctypedef npy_int16      int16_t
  * ctypedef npy_int32      int32_t
  * ctypedef npy_int64      int64_t             # <<<<<<<<<<<<<<
@@ -1060,7 +1060,7 @@ typedef npy_int32 __pyx_t_5numpy_int32_t;
  */
 typedef npy_int64 __pyx_t_5numpy_int64_t;
 
-/* "../venv/lib/python3.6/site-packages/numpy/__init__.pxd":696
+/* "../../venv/lib/python3.6/site-packages/numpy/__init__.pxd":696
  * #ctypedef npy_int128     int128_t
  * 
  * ctypedef npy_uint8      uint8_t             # <<<<<<<<<<<<<<
@@ -1069,7 +1069,7 @@ typedef npy_int64 __pyx_t_5numpy_int64_t;
  */
 typedef npy_uint8 __pyx_t_5numpy_uint8_t;
 
-/* "../venv/lib/python3.6/site-packages/numpy/__init__.pxd":697
+/* "../../venv/lib/python3.6/site-packages/numpy/__init__.pxd":697
  * 
  * ctypedef npy_uint8      uint8_t
  * ctypedef npy_uint16     uint16_t             # <<<<<<<<<<<<<<
@@ -1078,7 +1078,7 @@ typedef npy_uint8 __pyx_t_5numpy_uint8_t;
  */
 typedef npy_uint16 __pyx_t_5numpy_uint16_t;
 
-/* "../venv/lib/python3.6/site-packages/numpy/__init__.pxd":698
+/* "../../venv/lib/python3.6/site-packages/numpy/__init__.pxd":698
  * ctypedef npy_uint8      uint8_t
  * ctypedef npy_uint16     uint16_t
  * ctypedef npy_uint32     uint32_t             # <<<<<<<<<<<<<<
@@ -1087,7 +1087,7 @@ typedef npy_uint16 __pyx_t_5numpy_uint16_t;
  */
 typedef npy_uint32 __pyx_t_5numpy_uint32_t;
 
-/* "../venv/lib/python3.6/site-packages/numpy/__init__.pxd":699
+/* "../../venv/lib/python3.6/site-packages/numpy/__init__.pxd":699
  * ctypedef npy_uint16     uint16_t
  * ctypedef npy_uint32     uint32_t
  * ctypedef npy_uint64     uint64_t             # <<<<<<<<<<<<<<
@@ -1096,7 +1096,7 @@ typedef npy_uint32 __pyx_t_5numpy_uint32_t;
  */
 typedef npy_uint64 __pyx_t_5numpy_uint64_t;
 
-/* "../venv/lib/python3.6/site-packages/numpy/__init__.pxd":703
+/* "../../venv/lib/python3.6/site-packages/numpy/__init__.pxd":703
  * #ctypedef npy_uint128    uint128_t
  * 
  * ctypedef npy_float32    float32_t             # <<<<<<<<<<<<<<
@@ -1105,7 +1105,7 @@ typedef npy_uint64 __pyx_t_5numpy_uint64_t;
  */
 typedef npy_float32 __pyx_t_5numpy_float32_t;
 
-/* "../venv/lib/python3.6/site-packages/numpy/__init__.pxd":704
+/* "../../venv/lib/python3.6/site-packages/numpy/__init__.pxd":704
  * 
  * ctypedef npy_float32    float32_t
  * ctypedef npy_float64    float64_t             # <<<<<<<<<<<<<<
@@ -1114,7 +1114,7 @@ typedef npy_float32 __pyx_t_5numpy_float32_t;
  */
 typedef npy_float64 __pyx_t_5numpy_float64_t;
 
-/* "../venv/lib/python3.6/site-packages/numpy/__init__.pxd":713
+/* "../../venv/lib/python3.6/site-packages/numpy/__init__.pxd":713
  * # The int types are mapped a bit surprising --
  * # numpy.int corresponds to 'l' and numpy.long to 'q'
  * ctypedef npy_long       int_t             # <<<<<<<<<<<<<<
@@ -1123,7 +1123,7 @@ typedef npy_float64 __pyx_t_5numpy_float64_t;
  */
 typedef npy_long __pyx_t_5numpy_int_t;
 
-/* "../venv/lib/python3.6/site-packages/numpy/__init__.pxd":714
+/* "../../venv/lib/python3.6/site-packages/numpy/__init__.pxd":714
  * # numpy.int corresponds to 'l' and numpy.long to 'q'
  * ctypedef npy_long       int_t
  * ctypedef npy_longlong   long_t             # <<<<<<<<<<<<<<
@@ -1132,7 +1132,7 @@ typedef npy_long __pyx_t_5numpy_int_t;
  */
 typedef npy_longlong __pyx_t_5numpy_long_t;
 
-/* "../venv/lib/python3.6/site-packages/numpy/__init__.pxd":715
+/* "../../venv/lib/python3.6/site-packages/numpy/__init__.pxd":715
  * ctypedef npy_long       int_t
  * ctypedef npy_longlong   long_t
  * ctypedef npy_longlong   longlong_t             # <<<<<<<<<<<<<<
@@ -1141,7 +1141,7 @@ typedef npy_longlong __pyx_t_5numpy_long_t;
  */
 typedef npy_longlong __pyx_t_5numpy_longlong_t;
 
-/* "../venv/lib/python3.6/site-packages/numpy/__init__.pxd":717
+/* "../../venv/lib/python3.6/site-packages/numpy/__init__.pxd":717
  * ctypedef npy_longlong   longlong_t
  * 
  * ctypedef npy_ulong      uint_t             # <<<<<<<<<<<<<<
@@ -1150,7 +1150,7 @@ typedef npy_longlong __pyx_t_5numpy_longlong_t;
  */
 typedef npy_ulong __pyx_t_5numpy_uint_t;
 
-/* "../venv/lib/python3.6/site-packages/numpy/__init__.pxd":718
+/* "../../venv/lib/python3.6/site-packages/numpy/__init__.pxd":718
  * 
  * ctypedef npy_ulong      uint_t
  * ctypedef npy_ulonglong  ulong_t             # <<<<<<<<<<<<<<
@@ -1159,7 +1159,7 @@ typedef npy_ulong __pyx_t_5numpy_uint_t;
  */
 typedef npy_ulonglong __pyx_t_5numpy_ulong_t;
 
-/* "../venv/lib/python3.6/site-packages/numpy/__init__.pxd":719
+/* "../../venv/lib/python3.6/site-packages/numpy/__init__.pxd":719
  * ctypedef npy_ulong      uint_t
  * ctypedef npy_ulonglong  ulong_t
  * ctypedef npy_ulonglong  ulonglong_t             # <<<<<<<<<<<<<<
@@ -1168,7 +1168,7 @@ typedef npy_ulonglong __pyx_t_5numpy_ulong_t;
  */
 typedef npy_ulonglong __pyx_t_5numpy_ulonglong_t;
 
-/* "../venv/lib/python3.6/site-packages/numpy/__init__.pxd":721
+/* "../../venv/lib/python3.6/site-packages/numpy/__init__.pxd":721
  * ctypedef npy_ulonglong  ulonglong_t
  * 
  * ctypedef npy_intp       intp_t             # <<<<<<<<<<<<<<
@@ -1177,7 +1177,7 @@ typedef npy_ulonglong __pyx_t_5numpy_ulonglong_t;
  */
 typedef npy_intp __pyx_t_5numpy_intp_t;
 
-/* "../venv/lib/python3.6/site-packages/numpy/__init__.pxd":722
+/* "../../venv/lib/python3.6/site-packages/numpy/__init__.pxd":722
  * 
  * ctypedef npy_intp       intp_t
  * ctypedef npy_uintp      uintp_t             # <<<<<<<<<<<<<<
@@ -1186,7 +1186,7 @@ typedef npy_intp __pyx_t_5numpy_intp_t;
  */
 typedef npy_uintp __pyx_t_5numpy_uintp_t;
 
-/* "../venv/lib/python3.6/site-packages/numpy/__init__.pxd":724
+/* "../../venv/lib/python3.6/site-packages/numpy/__init__.pxd":724
  * ctypedef npy_uintp      uintp_t
  * 
  * ctypedef npy_double     float_t             # <<<<<<<<<<<<<<
@@ -1195,7 +1195,7 @@ typedef npy_uintp __pyx_t_5numpy_uintp_t;
  */
 typedef npy_double __pyx_t_5numpy_float_t;
 
-/* "../venv/lib/python3.6/site-packages/numpy/__init__.pxd":725
+/* "../../venv/lib/python3.6/site-packages/numpy/__init__.pxd":725
  * 
  * ctypedef npy_double     float_t
  * ctypedef npy_double     double_t             # <<<<<<<<<<<<<<
@@ -1204,7 +1204,7 @@ typedef npy_double __pyx_t_5numpy_float_t;
  */
 typedef npy_double __pyx_t_5numpy_double_t;
 
-/* "../venv/lib/python3.6/site-packages/numpy/__init__.pxd":726
+/* "../../venv/lib/python3.6/site-packages/numpy/__init__.pxd":726
  * ctypedef npy_double     float_t
  * ctypedef npy_double     double_t
  * ctypedef npy_longdouble longdouble_t             # <<<<<<<<<<<<<<
@@ -1239,7 +1239,7 @@ static CYTHON_INLINE __pyx_t_double_complex __pyx_t_double_complex_from_parts(do
 
 /*--- Type declarations ---*/
 
-/* "../venv/lib/python3.6/site-packages/numpy/__init__.pxd":728
+/* "../../venv/lib/python3.6/site-packages/numpy/__init__.pxd":728
  * ctypedef npy_longdouble longdouble_t
  * 
  * ctypedef npy_cfloat      cfloat_t             # <<<<<<<<<<<<<<
@@ -1248,7 +1248,7 @@ static CYTHON_INLINE __pyx_t_double_complex __pyx_t_double_complex_from_parts(do
  */
 typedef npy_cfloat __pyx_t_5numpy_cfloat_t;
 
-/* "../venv/lib/python3.6/site-packages/numpy/__init__.pxd":729
+/* "../../venv/lib/python3.6/site-packages/numpy/__init__.pxd":729
  * 
  * ctypedef npy_cfloat      cfloat_t
  * ctypedef npy_cdouble     cdouble_t             # <<<<<<<<<<<<<<
@@ -1257,7 +1257,7 @@ typedef npy_cfloat __pyx_t_5numpy_cfloat_t;
  */
 typedef npy_cdouble __pyx_t_5numpy_cdouble_t;
 
-/* "../venv/lib/python3.6/site-packages/numpy/__init__.pxd":730
+/* "../../venv/lib/python3.6/site-packages/numpy/__init__.pxd":730
  * ctypedef npy_cfloat      cfloat_t
  * ctypedef npy_cdouble     cdouble_t
  * ctypedef npy_clongdouble clongdouble_t             # <<<<<<<<<<<<<<
@@ -1266,7 +1266,7 @@ typedef npy_cdouble __pyx_t_5numpy_cdouble_t;
  */
 typedef npy_clongdouble __pyx_t_5numpy_clongdouble_t;
 
-/* "../venv/lib/python3.6/site-packages/numpy/__init__.pxd":732
+/* "../../venv/lib/python3.6/site-packages/numpy/__init__.pxd":732
  * ctypedef npy_clongdouble clongdouble_t
  * 
  * ctypedef npy_cdouble     complex_t             # <<<<<<<<<<<<<<
@@ -1764,15 +1764,15 @@ static PyTypeObject *__pyx_ptype_5numpy_ufunc = 0;
 
 /* Module declarations from 'cython' */
 
-/* Module declarations from 'cython_version' */
-static int __pyx_f_14cython_version_fill_grid_with_bresenham_line(unsigned int, unsigned int, unsigned int, unsigned int, PyArrayObject *); /*proto*/
+/* Module declarations from 'line_rasterization' */
+static int __pyx_f_18line_rasterization_fill_grid_with_bresenham_line(unsigned int, unsigned int, unsigned int, unsigned int, PyArrayObject *); /*proto*/
 static __Pyx_TypeInfo __Pyx_TypeInfo_nn___pyx_t_5numpy_int32_t = { "int32_t", NULL, sizeof(__pyx_t_5numpy_int32_t), { 0 }, 0, IS_UNSIGNED(__pyx_t_5numpy_int32_t) ? 'U' : 'I', IS_UNSIGNED(__pyx_t_5numpy_int32_t), 0 };
 static __Pyx_TypeInfo __Pyx_TypeInfo_long = { "long", NULL, sizeof(long), { 0 }, 0, IS_UNSIGNED(long) ? 'U' : 'I', IS_UNSIGNED(long), 0 };
-#define __Pyx_MODULE_NAME "cython_version"
-extern int __pyx_module_is_main_cython_version;
-int __pyx_module_is_main_cython_version = 0;
+#define __Pyx_MODULE_NAME "line_rasterization"
+extern int __pyx_module_is_main_line_rasterization;
+int __pyx_module_is_main_line_rasterization = 0;
 
-/* Implementation of 'cython_version' */
+/* Implementation of 'line_rasterization' */
 static PyObject *__pyx_builtin_range;
 static PyObject *__pyx_builtin_ImportError;
 static const char __pyx_k_k[] = "k";
@@ -1796,16 +1796,14 @@ static const char __pyx_k_grid_dim[] = "grid_dim";
 static const char __pyx_k_end_points[] = "end_points";
 static const char __pyx_k_ImportError[] = "ImportError";
 static const char __pyx_k_start_points[] = "start_points";
-static const char __pyx_k_cython_version[] = "cython_version";
 static const char __pyx_k_rasterize_lines[] = "rasterize_lines";
 static const char __pyx_k_cline_in_traceback[] = "cline_in_traceback";
-static const char __pyx_k_cython_version_pyx[] = "cython_version.pyx";
+static const char __pyx_k_line_rasterization[] = "line_rasterization";
+static const char __pyx_k_line_rasterization_pyx[] = "line_rasterization.pyx";
 static const char __pyx_k_numpy_core_multiarray_failed_to[] = "numpy.core.multiarray failed to import";
 static const char __pyx_k_numpy_core_umath_failed_to_impor[] = "numpy.core.umath failed to import";
 static PyObject *__pyx_n_s_ImportError;
 static PyObject *__pyx_n_s_cline_in_traceback;
-static PyObject *__pyx_n_s_cython_version;
-static PyObject *__pyx_kp_s_cython_version_pyx;
 static PyObject *__pyx_n_s_dtype;
 static PyObject *__pyx_n_s_end_points;
 static PyObject *__pyx_n_s_grid;
@@ -1813,6 +1811,8 @@ static PyObject *__pyx_n_s_grid_dim;
 static PyObject *__pyx_n_s_import;
 static PyObject *__pyx_n_s_int32;
 static PyObject *__pyx_n_s_k;
+static PyObject *__pyx_n_s_line_rasterization;
+static PyObject *__pyx_kp_s_line_rasterization_pyx;
 static PyObject *__pyx_n_s_main;
 static PyObject *__pyx_n_s_name;
 static PyObject *__pyx_n_s_np;
@@ -1829,14 +1829,14 @@ static PyObject *__pyx_n_s_x1;
 static PyObject *__pyx_n_s_y0;
 static PyObject *__pyx_n_s_y1;
 static PyObject *__pyx_n_s_zeros;
-static PyObject *__pyx_pf_14cython_version_rasterize_lines(CYTHON_UNUSED PyObject *__pyx_self, PyArrayObject *__pyx_v_start_points, PyArrayObject *__pyx_v_end_points, PyObject *__pyx_v_grid_dim); /* proto */
+static PyObject *__pyx_pf_18line_rasterization_rasterize_lines(CYTHON_UNUSED PyObject *__pyx_self, PyArrayObject *__pyx_v_start_points, PyArrayObject *__pyx_v_end_points, PyObject *__pyx_v_grid_dim); /* proto */
 static PyObject *__pyx_tuple_;
 static PyObject *__pyx_tuple__2;
 static PyObject *__pyx_tuple__3;
 static PyObject *__pyx_codeobj__4;
 /* Late includes */
 
-/* "cython_version.pyx":7
+/* "line_rasterization.pyx":7
  * 
  * @cython.boundscheck(False)
  * cdef int fill_grid_with_bresenham_line(unsigned x0, unsigned y0,             # <<<<<<<<<<<<<<
@@ -1844,7 +1844,7 @@ static PyObject *__pyx_codeobj__4;
  *                                        np.ndarray[np.int32_t, ndim=2] grid):
  */
 
-static int __pyx_f_14cython_version_fill_grid_with_bresenham_line(unsigned int __pyx_v_x0, unsigned int __pyx_v_y0, unsigned int __pyx_v_x1, unsigned int __pyx_v_y1, PyArrayObject *__pyx_v_grid) {
+static int __pyx_f_18line_rasterization_fill_grid_with_bresenham_line(unsigned int __pyx_v_x0, unsigned int __pyx_v_y0, unsigned int __pyx_v_x1, unsigned int __pyx_v_y1, PyArrayObject *__pyx_v_grid) {
   int __pyx_v_e2;
   int __pyx_v_sx;
   int __pyx_v_sy;
@@ -1873,7 +1873,7 @@ static int __pyx_f_14cython_version_fill_grid_with_bresenham_line(unsigned int _
   }
   __pyx_pybuffernd_grid.diminfo[0].strides = __pyx_pybuffernd_grid.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_grid.diminfo[0].shape = __pyx_pybuffernd_grid.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_grid.diminfo[1].strides = __pyx_pybuffernd_grid.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_grid.diminfo[1].shape = __pyx_pybuffernd_grid.rcbuffer->pybuffer.shape[1];
 
-  /* "cython_version.pyx":14
+  /* "line_rasterization.pyx":14
  *     cdef int dx, dy
  * 
  *     if x1 > x0:             # <<<<<<<<<<<<<<
@@ -1883,7 +1883,7 @@ static int __pyx_f_14cython_version_fill_grid_with_bresenham_line(unsigned int _
   __pyx_t_1 = ((__pyx_v_x1 > __pyx_v_x0) != 0);
   if (__pyx_t_1) {
 
-    /* "cython_version.pyx":15
+    /* "line_rasterization.pyx":15
  * 
  *     if x1 > x0:
  *         dx = x1 - x0             # <<<<<<<<<<<<<<
@@ -1892,7 +1892,7 @@ static int __pyx_f_14cython_version_fill_grid_with_bresenham_line(unsigned int _
  */
     __pyx_v_dx = (__pyx_v_x1 - __pyx_v_x0);
 
-    /* "cython_version.pyx":16
+    /* "line_rasterization.pyx":16
  *     if x1 > x0:
  *         dx = x1 - x0
  *         sx = 1             # <<<<<<<<<<<<<<
@@ -1901,7 +1901,7 @@ static int __pyx_f_14cython_version_fill_grid_with_bresenham_line(unsigned int _
  */
     __pyx_v_sx = 1;
 
-    /* "cython_version.pyx":14
+    /* "line_rasterization.pyx":14
  *     cdef int dx, dy
  * 
  *     if x1 > x0:             # <<<<<<<<<<<<<<
@@ -1911,7 +1911,7 @@ static int __pyx_f_14cython_version_fill_grid_with_bresenham_line(unsigned int _
     goto __pyx_L3;
   }
 
-  /* "cython_version.pyx":18
+  /* "line_rasterization.pyx":18
  *         sx = 1
  *     else:
  *         dx = x0 - x1             # <<<<<<<<<<<<<<
@@ -1921,7 +1921,7 @@ static int __pyx_f_14cython_version_fill_grid_with_bresenham_line(unsigned int _
   /*else*/ {
     __pyx_v_dx = (__pyx_v_x0 - __pyx_v_x1);
 
-    /* "cython_version.pyx":19
+    /* "line_rasterization.pyx":19
  *     else:
  *         dx = x0 - x1
  *         sx = -1             # <<<<<<<<<<<<<<
@@ -1932,7 +1932,7 @@ static int __pyx_f_14cython_version_fill_grid_with_bresenham_line(unsigned int _
   }
   __pyx_L3:;
 
-  /* "cython_version.pyx":21
+  /* "line_rasterization.pyx":21
  *         sx = -1
  * 
  *     if y1 > y0:             # <<<<<<<<<<<<<<
@@ -1942,7 +1942,7 @@ static int __pyx_f_14cython_version_fill_grid_with_bresenham_line(unsigned int _
   __pyx_t_1 = ((__pyx_v_y1 > __pyx_v_y0) != 0);
   if (__pyx_t_1) {
 
-    /* "cython_version.pyx":22
+    /* "line_rasterization.pyx":22
  * 
  *     if y1 > y0:
  *         dy = y0 - y1             # <<<<<<<<<<<<<<
@@ -1951,7 +1951,7 @@ static int __pyx_f_14cython_version_fill_grid_with_bresenham_line(unsigned int _
  */
     __pyx_v_dy = (__pyx_v_y0 - __pyx_v_y1);
 
-    /* "cython_version.pyx":23
+    /* "line_rasterization.pyx":23
  *     if y1 > y0:
  *         dy = y0 - y1
  *         sy = 1             # <<<<<<<<<<<<<<
@@ -1960,7 +1960,7 @@ static int __pyx_f_14cython_version_fill_grid_with_bresenham_line(unsigned int _
  */
     __pyx_v_sy = 1;
 
-    /* "cython_version.pyx":21
+    /* "line_rasterization.pyx":21
  *         sx = -1
  * 
  *     if y1 > y0:             # <<<<<<<<<<<<<<
@@ -1970,7 +1970,7 @@ static int __pyx_f_14cython_version_fill_grid_with_bresenham_line(unsigned int _
     goto __pyx_L4;
   }
 
-  /* "cython_version.pyx":25
+  /* "line_rasterization.pyx":25
  *         sy = 1
  *     else:
  *         dy = y1 - y0             # <<<<<<<<<<<<<<
@@ -1980,7 +1980,7 @@ static int __pyx_f_14cython_version_fill_grid_with_bresenham_line(unsigned int _
   /*else*/ {
     __pyx_v_dy = (__pyx_v_y1 - __pyx_v_y0);
 
-    /* "cython_version.pyx":26
+    /* "line_rasterization.pyx":26
  *     else:
  *         dy = y1 - y0
  *         sy = -1             # <<<<<<<<<<<<<<
@@ -1991,7 +1991,7 @@ static int __pyx_f_14cython_version_fill_grid_with_bresenham_line(unsigned int _
   }
   __pyx_L4:;
 
-  /* "cython_version.pyx":28
+  /* "line_rasterization.pyx":28
  *         sy = -1
  * 
  *     error = dx + dy             # <<<<<<<<<<<<<<
@@ -2000,7 +2000,7 @@ static int __pyx_f_14cython_version_fill_grid_with_bresenham_line(unsigned int _
  */
   __pyx_v_error = (__pyx_v_dx + __pyx_v_dy);
 
-  /* "cython_version.pyx":30
+  /* "line_rasterization.pyx":30
  *     error = dx + dy
  * 
  *     while True:             # <<<<<<<<<<<<<<
@@ -2009,7 +2009,7 @@ static int __pyx_f_14cython_version_fill_grid_with_bresenham_line(unsigned int _
  */
   while (1) {
 
-    /* "cython_version.pyx":31
+    /* "line_rasterization.pyx":31
  * 
  *     while True:
  *         grid[x0, y0] += 1             # <<<<<<<<<<<<<<
@@ -2020,7 +2020,7 @@ static int __pyx_f_14cython_version_fill_grid_with_bresenham_line(unsigned int _
     __pyx_t_3 = __pyx_v_y0;
     *__Pyx_BufPtrStrided2d(__pyx_t_5numpy_int32_t *, __pyx_pybuffernd_grid.rcbuffer->pybuffer.buf, __pyx_t_2, __pyx_pybuffernd_grid.diminfo[0].strides, __pyx_t_3, __pyx_pybuffernd_grid.diminfo[1].strides) += 1;
 
-    /* "cython_version.pyx":32
+    /* "line_rasterization.pyx":32
  *     while True:
  *         grid[x0, y0] += 1
  *         if (x0 == x1) and (y0 == y1):             # <<<<<<<<<<<<<<
@@ -2038,7 +2038,7 @@ static int __pyx_f_14cython_version_fill_grid_with_bresenham_line(unsigned int _
     __pyx_L8_bool_binop_done:;
     if (__pyx_t_1) {
 
-      /* "cython_version.pyx":33
+      /* "line_rasterization.pyx":33
  *         grid[x0, y0] += 1
  *         if (x0 == x1) and (y0 == y1):
  *             break             # <<<<<<<<<<<<<<
@@ -2047,7 +2047,7 @@ static int __pyx_f_14cython_version_fill_grid_with_bresenham_line(unsigned int _
  */
       goto __pyx_L6_break;
 
-      /* "cython_version.pyx":32
+      /* "line_rasterization.pyx":32
  *     while True:
  *         grid[x0, y0] += 1
  *         if (x0 == x1) and (y0 == y1):             # <<<<<<<<<<<<<<
@@ -2056,7 +2056,7 @@ static int __pyx_f_14cython_version_fill_grid_with_bresenham_line(unsigned int _
  */
     }
 
-    /* "cython_version.pyx":34
+    /* "line_rasterization.pyx":34
  *         if (x0 == x1) and (y0 == y1):
  *             break
  *         e2 = 2 * error             # <<<<<<<<<<<<<<
@@ -2065,7 +2065,7 @@ static int __pyx_f_14cython_version_fill_grid_with_bresenham_line(unsigned int _
  */
     __pyx_v_e2 = (2 * __pyx_v_error);
 
-    /* "cython_version.pyx":35
+    /* "line_rasterization.pyx":35
  *             break
  *         e2 = 2 * error
  *         if e2 >= dy:             # <<<<<<<<<<<<<<
@@ -2075,7 +2075,7 @@ static int __pyx_f_14cython_version_fill_grid_with_bresenham_line(unsigned int _
     __pyx_t_1 = ((__pyx_v_e2 >= __pyx_v_dy) != 0);
     if (__pyx_t_1) {
 
-      /* "cython_version.pyx":36
+      /* "line_rasterization.pyx":36
  *         e2 = 2 * error
  *         if e2 >= dy:
  *             if x0 == x1:             # <<<<<<<<<<<<<<
@@ -2085,7 +2085,7 @@ static int __pyx_f_14cython_version_fill_grid_with_bresenham_line(unsigned int _
       __pyx_t_1 = ((__pyx_v_x0 == __pyx_v_x1) != 0);
       if (__pyx_t_1) {
 
-        /* "cython_version.pyx":37
+        /* "line_rasterization.pyx":37
  *         if e2 >= dy:
  *             if x0 == x1:
  *                 break             # <<<<<<<<<<<<<<
@@ -2094,7 +2094,7 @@ static int __pyx_f_14cython_version_fill_grid_with_bresenham_line(unsigned int _
  */
         goto __pyx_L6_break;
 
-        /* "cython_version.pyx":36
+        /* "line_rasterization.pyx":36
  *         e2 = 2 * error
  *         if e2 >= dy:
  *             if x0 == x1:             # <<<<<<<<<<<<<<
@@ -2103,7 +2103,7 @@ static int __pyx_f_14cython_version_fill_grid_with_bresenham_line(unsigned int _
  */
       }
 
-      /* "cython_version.pyx":38
+      /* "line_rasterization.pyx":38
  *             if x0 == x1:
  *                 break
  *             error = error + dy             # <<<<<<<<<<<<<<
@@ -2112,7 +2112,7 @@ static int __pyx_f_14cython_version_fill_grid_with_bresenham_line(unsigned int _
  */
       __pyx_v_error = (__pyx_v_error + __pyx_v_dy);
 
-      /* "cython_version.pyx":39
+      /* "line_rasterization.pyx":39
  *                 break
  *             error = error + dy
  *             x0 = x0 + sx             # <<<<<<<<<<<<<<
@@ -2121,7 +2121,7 @@ static int __pyx_f_14cython_version_fill_grid_with_bresenham_line(unsigned int _
  */
       __pyx_v_x0 = (__pyx_v_x0 + __pyx_v_sx);
 
-      /* "cython_version.pyx":35
+      /* "line_rasterization.pyx":35
  *             break
  *         e2 = 2 * error
  *         if e2 >= dy:             # <<<<<<<<<<<<<<
@@ -2130,7 +2130,7 @@ static int __pyx_f_14cython_version_fill_grid_with_bresenham_line(unsigned int _
  */
     }
 
-    /* "cython_version.pyx":40
+    /* "line_rasterization.pyx":40
  *             error = error + dy
  *             x0 = x0 + sx
  *         if e2 <= dx:             # <<<<<<<<<<<<<<
@@ -2140,7 +2140,7 @@ static int __pyx_f_14cython_version_fill_grid_with_bresenham_line(unsigned int _
     __pyx_t_1 = ((__pyx_v_e2 <= __pyx_v_dx) != 0);
     if (__pyx_t_1) {
 
-      /* "cython_version.pyx":41
+      /* "line_rasterization.pyx":41
  *             x0 = x0 + sx
  *         if e2 <= dx:
  *             if y0 == y1:             # <<<<<<<<<<<<<<
@@ -2150,7 +2150,7 @@ static int __pyx_f_14cython_version_fill_grid_with_bresenham_line(unsigned int _
       __pyx_t_1 = ((__pyx_v_y0 == __pyx_v_y1) != 0);
       if (__pyx_t_1) {
 
-        /* "cython_version.pyx":42
+        /* "line_rasterization.pyx":42
  *         if e2 <= dx:
  *             if y0 == y1:
  *                 break             # <<<<<<<<<<<<<<
@@ -2159,7 +2159,7 @@ static int __pyx_f_14cython_version_fill_grid_with_bresenham_line(unsigned int _
  */
         goto __pyx_L6_break;
 
-        /* "cython_version.pyx":41
+        /* "line_rasterization.pyx":41
  *             x0 = x0 + sx
  *         if e2 <= dx:
  *             if y0 == y1:             # <<<<<<<<<<<<<<
@@ -2168,7 +2168,7 @@ static int __pyx_f_14cython_version_fill_grid_with_bresenham_line(unsigned int _
  */
       }
 
-      /* "cython_version.pyx":43
+      /* "line_rasterization.pyx":43
  *             if y0 == y1:
  *                 break
  *             error = error + dx             # <<<<<<<<<<<<<<
@@ -2177,7 +2177,7 @@ static int __pyx_f_14cython_version_fill_grid_with_bresenham_line(unsigned int _
  */
       __pyx_v_error = (__pyx_v_error + __pyx_v_dx);
 
-      /* "cython_version.pyx":44
+      /* "line_rasterization.pyx":44
  *                 break
  *             error = error + dx
  *             y0 = y0 + sy             # <<<<<<<<<<<<<<
@@ -2186,7 +2186,7 @@ static int __pyx_f_14cython_version_fill_grid_with_bresenham_line(unsigned int _
  */
       __pyx_v_y0 = (__pyx_v_y0 + __pyx_v_sy);
 
-      /* "cython_version.pyx":40
+      /* "line_rasterization.pyx":40
  *             error = error + dy
  *             x0 = x0 + sx
  *         if e2 <= dx:             # <<<<<<<<<<<<<<
@@ -2197,7 +2197,7 @@ static int __pyx_f_14cython_version_fill_grid_with_bresenham_line(unsigned int _
   }
   __pyx_L6_break:;
 
-  /* "cython_version.pyx":46
+  /* "line_rasterization.pyx":46
  *             y0 = y0 + sy
  * 
  *     return 0             # <<<<<<<<<<<<<<
@@ -2207,7 +2207,7 @@ static int __pyx_f_14cython_version_fill_grid_with_bresenham_line(unsigned int _
   __pyx_r = 0;
   goto __pyx_L0;
 
-  /* "cython_version.pyx":7
+  /* "line_rasterization.pyx":7
  * 
  * @cython.boundscheck(False)
  * cdef int fill_grid_with_bresenham_line(unsigned x0, unsigned y0,             # <<<<<<<<<<<<<<
@@ -2223,7 +2223,7 @@ static int __pyx_f_14cython_version_fill_grid_with_bresenham_line(unsigned int _
     __Pyx_ErrFetch(&__pyx_type, &__pyx_value, &__pyx_tb);
     __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_grid.rcbuffer->pybuffer);
   __Pyx_ErrRestore(__pyx_type, __pyx_value, __pyx_tb);}
-  __Pyx_WriteUnraisable("cython_version.fill_grid_with_bresenham_line", __pyx_clineno, __pyx_lineno, __pyx_filename, 1, 0);
+  __Pyx_WriteUnraisable("line_rasterization.fill_grid_with_bresenham_line", __pyx_clineno, __pyx_lineno, __pyx_filename, 1, 0);
   __pyx_r = 0;
   goto __pyx_L2;
   __pyx_L0:;
@@ -2233,7 +2233,7 @@ static int __pyx_f_14cython_version_fill_grid_with_bresenham_line(unsigned int _
   return __pyx_r;
 }
 
-/* "cython_version.pyx":50
+/* "line_rasterization.pyx":50
  * 
  * 
  * def rasterize_lines(np.ndarray[long, ndim=2] start_points,             # <<<<<<<<<<<<<<
@@ -2242,9 +2242,9 @@ static int __pyx_f_14cython_version_fill_grid_with_bresenham_line(unsigned int _
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_14cython_version_1rasterize_lines(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyMethodDef __pyx_mdef_14cython_version_1rasterize_lines = {"rasterize_lines", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_14cython_version_1rasterize_lines, METH_VARARGS|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_14cython_version_1rasterize_lines(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_18line_rasterization_1rasterize_lines(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyMethodDef __pyx_mdef_18line_rasterization_1rasterize_lines = {"rasterize_lines", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_18line_rasterization_1rasterize_lines, METH_VARARGS|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_18line_rasterization_1rasterize_lines(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyArrayObject *__pyx_v_start_points = 0;
   PyArrayObject *__pyx_v_end_points = 0;
   PyObject *__pyx_v_grid_dim = 0;
@@ -2306,14 +2306,14 @@ static PyObject *__pyx_pw_14cython_version_1rasterize_lines(PyObject *__pyx_self
   __pyx_L5_argtuple_error:;
   __Pyx_RaiseArgtupleInvalid("rasterize_lines", 1, 3, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 50, __pyx_L3_error)
   __pyx_L3_error:;
-  __Pyx_AddTraceback("cython_version.rasterize_lines", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("line_rasterization.rasterize_lines", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
   if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_start_points), __pyx_ptype_5numpy_ndarray, 1, "start_points", 0))) __PYX_ERR(0, 50, __pyx_L1_error)
   if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_end_points), __pyx_ptype_5numpy_ndarray, 1, "end_points", 0))) __PYX_ERR(0, 51, __pyx_L1_error)
   if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_grid_dim), (&PyTuple_Type), 1, "grid_dim", 1))) __PYX_ERR(0, 52, __pyx_L1_error)
-  __pyx_r = __pyx_pf_14cython_version_rasterize_lines(__pyx_self, __pyx_v_start_points, __pyx_v_end_points, __pyx_v_grid_dim);
+  __pyx_r = __pyx_pf_18line_rasterization_rasterize_lines(__pyx_self, __pyx_v_start_points, __pyx_v_end_points, __pyx_v_grid_dim);
 
   /* function exit code */
   goto __pyx_L0;
@@ -2324,7 +2324,7 @@ static PyObject *__pyx_pw_14cython_version_1rasterize_lines(PyObject *__pyx_self
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_14cython_version_rasterize_lines(CYTHON_UNUSED PyObject *__pyx_self, PyArrayObject *__pyx_v_start_points, PyArrayObject *__pyx_v_end_points, PyObject *__pyx_v_grid_dim) {
+static PyObject *__pyx_pf_18line_rasterization_rasterize_lines(CYTHON_UNUSED PyObject *__pyx_self, PyArrayObject *__pyx_v_start_points, PyArrayObject *__pyx_v_end_points, PyObject *__pyx_v_grid_dim) {
   unsigned int __pyx_v_k;
   unsigned int __pyx_v_nrows;
   unsigned int __pyx_v_x0;
@@ -2372,7 +2372,7 @@ static PyObject *__pyx_pf_14cython_version_rasterize_lines(CYTHON_UNUSED PyObjec
   }
   __pyx_pybuffernd_end_points.diminfo[0].strides = __pyx_pybuffernd_end_points.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_end_points.diminfo[0].shape = __pyx_pybuffernd_end_points.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_end_points.diminfo[1].strides = __pyx_pybuffernd_end_points.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_end_points.diminfo[1].shape = __pyx_pybuffernd_end_points.rcbuffer->pybuffer.shape[1];
 
-  /* "cython_version.pyx":56
+  /* "line_rasterization.pyx":56
  *     cdef unsigned x0, y0, x1, y1
  * 
  *     grid = np.zeros(grid_dim, dtype=np.int32)             # <<<<<<<<<<<<<<
@@ -2406,7 +2406,7 @@ static PyObject *__pyx_pf_14cython_version_rasterize_lines(CYTHON_UNUSED PyObjec
   __pyx_v_grid = __pyx_t_5;
   __pyx_t_5 = 0;
 
-  /* "cython_version.pyx":58
+  /* "line_rasterization.pyx":58
  *     grid = np.zeros(grid_dim, dtype=np.int32)
  * 
  *     nrows = start_points.shape[0]             # <<<<<<<<<<<<<<
@@ -2415,7 +2415,7 @@ static PyObject *__pyx_pf_14cython_version_rasterize_lines(CYTHON_UNUSED PyObjec
  */
   __pyx_v_nrows = (__pyx_v_start_points->dimensions[0]);
 
-  /* "cython_version.pyx":60
+  /* "line_rasterization.pyx":60
  *     nrows = start_points.shape[0]
  * 
  *     for k in range(nrows):             # <<<<<<<<<<<<<<
@@ -2427,7 +2427,7 @@ static PyObject *__pyx_pf_14cython_version_rasterize_lines(CYTHON_UNUSED PyObjec
   for (__pyx_t_8 = 0; __pyx_t_8 < __pyx_t_7; __pyx_t_8+=1) {
     __pyx_v_k = __pyx_t_8;
 
-    /* "cython_version.pyx":61
+    /* "line_rasterization.pyx":61
  * 
  *     for k in range(nrows):
  *         x0 = start_points[k, 0]             # <<<<<<<<<<<<<<
@@ -2448,7 +2448,7 @@ static PyObject *__pyx_pf_14cython_version_rasterize_lines(CYTHON_UNUSED PyObjec
     }
     __pyx_v_x0 = (*__Pyx_BufPtrStrided2d(long *, __pyx_pybuffernd_start_points.rcbuffer->pybuffer.buf, __pyx_t_9, __pyx_pybuffernd_start_points.diminfo[0].strides, __pyx_t_10, __pyx_pybuffernd_start_points.diminfo[1].strides));
 
-    /* "cython_version.pyx":62
+    /* "line_rasterization.pyx":62
  *     for k in range(nrows):
  *         x0 = start_points[k, 0]
  *         y0 = start_points[k, 1]             # <<<<<<<<<<<<<<
@@ -2469,7 +2469,7 @@ static PyObject *__pyx_pf_14cython_version_rasterize_lines(CYTHON_UNUSED PyObjec
     }
     __pyx_v_y0 = (*__Pyx_BufPtrStrided2d(long *, __pyx_pybuffernd_start_points.rcbuffer->pybuffer.buf, __pyx_t_9, __pyx_pybuffernd_start_points.diminfo[0].strides, __pyx_t_10, __pyx_pybuffernd_start_points.diminfo[1].strides));
 
-    /* "cython_version.pyx":63
+    /* "line_rasterization.pyx":63
  *         x0 = start_points[k, 0]
  *         y0 = start_points[k, 1]
  *         x1 = end_points[k, 0]             # <<<<<<<<<<<<<<
@@ -2490,7 +2490,7 @@ static PyObject *__pyx_pf_14cython_version_rasterize_lines(CYTHON_UNUSED PyObjec
     }
     __pyx_v_x1 = (*__Pyx_BufPtrStrided2d(long *, __pyx_pybuffernd_end_points.rcbuffer->pybuffer.buf, __pyx_t_9, __pyx_pybuffernd_end_points.diminfo[0].strides, __pyx_t_10, __pyx_pybuffernd_end_points.diminfo[1].strides));
 
-    /* "cython_version.pyx":64
+    /* "line_rasterization.pyx":64
  *         y0 = start_points[k, 1]
  *         x1 = end_points[k, 0]
  *         y1 = end_points[k, 1]             # <<<<<<<<<<<<<<
@@ -2511,17 +2511,17 @@ static PyObject *__pyx_pf_14cython_version_rasterize_lines(CYTHON_UNUSED PyObjec
     }
     __pyx_v_y1 = (*__Pyx_BufPtrStrided2d(long *, __pyx_pybuffernd_end_points.rcbuffer->pybuffer.buf, __pyx_t_9, __pyx_pybuffernd_end_points.diminfo[0].strides, __pyx_t_10, __pyx_pybuffernd_end_points.diminfo[1].strides));
 
-    /* "cython_version.pyx":65
+    /* "line_rasterization.pyx":65
  *         x1 = end_points[k, 0]
  *         y1 = end_points[k, 1]
  *         fill_grid_with_bresenham_line(x0, y0, x1, y1, grid)             # <<<<<<<<<<<<<<
  *     return grid
  */
     if (!(likely(((__pyx_v_grid) == Py_None) || likely(__Pyx_TypeTest(__pyx_v_grid, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 65, __pyx_L1_error)
-    (void)(__pyx_f_14cython_version_fill_grid_with_bresenham_line(__pyx_v_x0, __pyx_v_y0, __pyx_v_x1, __pyx_v_y1, ((PyArrayObject *)__pyx_v_grid)));
+    (void)(__pyx_f_18line_rasterization_fill_grid_with_bresenham_line(__pyx_v_x0, __pyx_v_y0, __pyx_v_x1, __pyx_v_y1, ((PyArrayObject *)__pyx_v_grid)));
   }
 
-  /* "cython_version.pyx":66
+  /* "line_rasterization.pyx":66
  *         y1 = end_points[k, 1]
  *         fill_grid_with_bresenham_line(x0, y0, x1, y1, grid)
  *     return grid             # <<<<<<<<<<<<<<
@@ -2531,7 +2531,7 @@ static PyObject *__pyx_pf_14cython_version_rasterize_lines(CYTHON_UNUSED PyObjec
   __pyx_r = __pyx_v_grid;
   goto __pyx_L0;
 
-  /* "cython_version.pyx":50
+  /* "line_rasterization.pyx":50
  * 
  * 
  * def rasterize_lines(np.ndarray[long, ndim=2] start_points,             # <<<<<<<<<<<<<<
@@ -2553,7 +2553,7 @@ static PyObject *__pyx_pf_14cython_version_rasterize_lines(CYTHON_UNUSED PyObjec
     __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_end_points.rcbuffer->pybuffer);
     __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_start_points.rcbuffer->pybuffer);
   __Pyx_ErrRestore(__pyx_type, __pyx_value, __pyx_tb);}
-  __Pyx_AddTraceback("cython_version.rasterize_lines", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("line_rasterization.rasterize_lines", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   goto __pyx_L2;
   __pyx_L0:;
@@ -2566,7 +2566,7 @@ static PyObject *__pyx_pf_14cython_version_rasterize_lines(CYTHON_UNUSED PyObjec
   return __pyx_r;
 }
 
-/* "../venv/lib/python3.6/site-packages/numpy/__init__.pxd":734
+/* "../../venv/lib/python3.6/site-packages/numpy/__init__.pxd":734
  * ctypedef npy_cdouble     complex_t
  * 
  * cdef inline object PyArray_MultiIterNew1(a):             # <<<<<<<<<<<<<<
@@ -2583,7 +2583,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew1(PyObject *__
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("PyArray_MultiIterNew1", 0);
 
-  /* "../venv/lib/python3.6/site-packages/numpy/__init__.pxd":735
+  /* "../../venv/lib/python3.6/site-packages/numpy/__init__.pxd":735
  * 
  * cdef inline object PyArray_MultiIterNew1(a):
  *     return PyArray_MultiIterNew(1, <void*>a)             # <<<<<<<<<<<<<<
@@ -2597,7 +2597,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew1(PyObject *__
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "../venv/lib/python3.6/site-packages/numpy/__init__.pxd":734
+  /* "../../venv/lib/python3.6/site-packages/numpy/__init__.pxd":734
  * ctypedef npy_cdouble     complex_t
  * 
  * cdef inline object PyArray_MultiIterNew1(a):             # <<<<<<<<<<<<<<
@@ -2616,7 +2616,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew1(PyObject *__
   return __pyx_r;
 }
 
-/* "../venv/lib/python3.6/site-packages/numpy/__init__.pxd":737
+/* "../../venv/lib/python3.6/site-packages/numpy/__init__.pxd":737
  *     return PyArray_MultiIterNew(1, <void*>a)
  * 
  * cdef inline object PyArray_MultiIterNew2(a, b):             # <<<<<<<<<<<<<<
@@ -2633,7 +2633,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew2(PyObject *__
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("PyArray_MultiIterNew2", 0);
 
-  /* "../venv/lib/python3.6/site-packages/numpy/__init__.pxd":738
+  /* "../../venv/lib/python3.6/site-packages/numpy/__init__.pxd":738
  * 
  * cdef inline object PyArray_MultiIterNew2(a, b):
  *     return PyArray_MultiIterNew(2, <void*>a, <void*>b)             # <<<<<<<<<<<<<<
@@ -2647,7 +2647,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew2(PyObject *__
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "../venv/lib/python3.6/site-packages/numpy/__init__.pxd":737
+  /* "../../venv/lib/python3.6/site-packages/numpy/__init__.pxd":737
  *     return PyArray_MultiIterNew(1, <void*>a)
  * 
  * cdef inline object PyArray_MultiIterNew2(a, b):             # <<<<<<<<<<<<<<
@@ -2666,7 +2666,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew2(PyObject *__
   return __pyx_r;
 }
 
-/* "../venv/lib/python3.6/site-packages/numpy/__init__.pxd":740
+/* "../../venv/lib/python3.6/site-packages/numpy/__init__.pxd":740
  *     return PyArray_MultiIterNew(2, <void*>a, <void*>b)
  * 
  * cdef inline object PyArray_MultiIterNew3(a, b, c):             # <<<<<<<<<<<<<<
@@ -2683,7 +2683,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew3(PyObject *__
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("PyArray_MultiIterNew3", 0);
 
-  /* "../venv/lib/python3.6/site-packages/numpy/__init__.pxd":741
+  /* "../../venv/lib/python3.6/site-packages/numpy/__init__.pxd":741
  * 
  * cdef inline object PyArray_MultiIterNew3(a, b, c):
  *     return PyArray_MultiIterNew(3, <void*>a, <void*>b, <void*> c)             # <<<<<<<<<<<<<<
@@ -2697,7 +2697,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew3(PyObject *__
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "../venv/lib/python3.6/site-packages/numpy/__init__.pxd":740
+  /* "../../venv/lib/python3.6/site-packages/numpy/__init__.pxd":740
  *     return PyArray_MultiIterNew(2, <void*>a, <void*>b)
  * 
  * cdef inline object PyArray_MultiIterNew3(a, b, c):             # <<<<<<<<<<<<<<
@@ -2716,7 +2716,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew3(PyObject *__
   return __pyx_r;
 }
 
-/* "../venv/lib/python3.6/site-packages/numpy/__init__.pxd":743
+/* "../../venv/lib/python3.6/site-packages/numpy/__init__.pxd":743
  *     return PyArray_MultiIterNew(3, <void*>a, <void*>b, <void*> c)
  * 
  * cdef inline object PyArray_MultiIterNew4(a, b, c, d):             # <<<<<<<<<<<<<<
@@ -2733,7 +2733,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew4(PyObject *__
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("PyArray_MultiIterNew4", 0);
 
-  /* "../venv/lib/python3.6/site-packages/numpy/__init__.pxd":744
+  /* "../../venv/lib/python3.6/site-packages/numpy/__init__.pxd":744
  * 
  * cdef inline object PyArray_MultiIterNew4(a, b, c, d):
  *     return PyArray_MultiIterNew(4, <void*>a, <void*>b, <void*>c, <void*> d)             # <<<<<<<<<<<<<<
@@ -2747,7 +2747,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew4(PyObject *__
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "../venv/lib/python3.6/site-packages/numpy/__init__.pxd":743
+  /* "../../venv/lib/python3.6/site-packages/numpy/__init__.pxd":743
  *     return PyArray_MultiIterNew(3, <void*>a, <void*>b, <void*> c)
  * 
  * cdef inline object PyArray_MultiIterNew4(a, b, c, d):             # <<<<<<<<<<<<<<
@@ -2766,7 +2766,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew4(PyObject *__
   return __pyx_r;
 }
 
-/* "../venv/lib/python3.6/site-packages/numpy/__init__.pxd":746
+/* "../../venv/lib/python3.6/site-packages/numpy/__init__.pxd":746
  *     return PyArray_MultiIterNew(4, <void*>a, <void*>b, <void*>c, <void*> d)
  * 
  * cdef inline object PyArray_MultiIterNew5(a, b, c, d, e):             # <<<<<<<<<<<<<<
@@ -2783,7 +2783,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew5(PyObject *__
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("PyArray_MultiIterNew5", 0);
 
-  /* "../venv/lib/python3.6/site-packages/numpy/__init__.pxd":747
+  /* "../../venv/lib/python3.6/site-packages/numpy/__init__.pxd":747
  * 
  * cdef inline object PyArray_MultiIterNew5(a, b, c, d, e):
  *     return PyArray_MultiIterNew(5, <void*>a, <void*>b, <void*>c, <void*> d, <void*> e)             # <<<<<<<<<<<<<<
@@ -2797,7 +2797,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew5(PyObject *__
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "../venv/lib/python3.6/site-packages/numpy/__init__.pxd":746
+  /* "../../venv/lib/python3.6/site-packages/numpy/__init__.pxd":746
  *     return PyArray_MultiIterNew(4, <void*>a, <void*>b, <void*>c, <void*> d)
  * 
  * cdef inline object PyArray_MultiIterNew5(a, b, c, d, e):             # <<<<<<<<<<<<<<
@@ -2816,7 +2816,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew5(PyObject *__
   return __pyx_r;
 }
 
-/* "../venv/lib/python3.6/site-packages/numpy/__init__.pxd":749
+/* "../../venv/lib/python3.6/site-packages/numpy/__init__.pxd":749
  *     return PyArray_MultiIterNew(5, <void*>a, <void*>b, <void*>c, <void*> d, <void*> e)
  * 
  * cdef inline tuple PyDataType_SHAPE(dtype d):             # <<<<<<<<<<<<<<
@@ -2830,7 +2830,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyDataType_SHAPE(PyArray_Descr *__
   int __pyx_t_1;
   __Pyx_RefNannySetupContext("PyDataType_SHAPE", 0);
 
-  /* "../venv/lib/python3.6/site-packages/numpy/__init__.pxd":750
+  /* "../../venv/lib/python3.6/site-packages/numpy/__init__.pxd":750
  * 
  * cdef inline tuple PyDataType_SHAPE(dtype d):
  *     if PyDataType_HASSUBARRAY(d):             # <<<<<<<<<<<<<<
@@ -2840,7 +2840,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyDataType_SHAPE(PyArray_Descr *__
   __pyx_t_1 = (PyDataType_HASSUBARRAY(__pyx_v_d) != 0);
   if (__pyx_t_1) {
 
-    /* "../venv/lib/python3.6/site-packages/numpy/__init__.pxd":751
+    /* "../../venv/lib/python3.6/site-packages/numpy/__init__.pxd":751
  * cdef inline tuple PyDataType_SHAPE(dtype d):
  *     if PyDataType_HASSUBARRAY(d):
  *         return <tuple>d.subarray.shape             # <<<<<<<<<<<<<<
@@ -2852,7 +2852,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyDataType_SHAPE(PyArray_Descr *__
     __pyx_r = ((PyObject*)__pyx_v_d->subarray->shape);
     goto __pyx_L0;
 
-    /* "../venv/lib/python3.6/site-packages/numpy/__init__.pxd":750
+    /* "../../venv/lib/python3.6/site-packages/numpy/__init__.pxd":750
  * 
  * cdef inline tuple PyDataType_SHAPE(dtype d):
  *     if PyDataType_HASSUBARRAY(d):             # <<<<<<<<<<<<<<
@@ -2861,7 +2861,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyDataType_SHAPE(PyArray_Descr *__
  */
   }
 
-  /* "../venv/lib/python3.6/site-packages/numpy/__init__.pxd":753
+  /* "../../venv/lib/python3.6/site-packages/numpy/__init__.pxd":753
  *         return <tuple>d.subarray.shape
  *     else:
  *         return ()             # <<<<<<<<<<<<<<
@@ -2875,7 +2875,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyDataType_SHAPE(PyArray_Descr *__
     goto __pyx_L0;
   }
 
-  /* "../venv/lib/python3.6/site-packages/numpy/__init__.pxd":749
+  /* "../../venv/lib/python3.6/site-packages/numpy/__init__.pxd":749
  *     return PyArray_MultiIterNew(5, <void*>a, <void*>b, <void*>c, <void*> d, <void*> e)
  * 
  * cdef inline tuple PyDataType_SHAPE(dtype d):             # <<<<<<<<<<<<<<
@@ -2890,7 +2890,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyDataType_SHAPE(PyArray_Descr *__
   return __pyx_r;
 }
 
-/* "../venv/lib/python3.6/site-packages/numpy/__init__.pxd":868
+/* "../../venv/lib/python3.6/site-packages/numpy/__init__.pxd":868
  *     int _import_umath() except -1
  * 
  * cdef inline void set_array_base(ndarray arr, object base):             # <<<<<<<<<<<<<<
@@ -2902,7 +2902,7 @@ static CYTHON_INLINE void __pyx_f_5numpy_set_array_base(PyArrayObject *__pyx_v_a
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("set_array_base", 0);
 
-  /* "../venv/lib/python3.6/site-packages/numpy/__init__.pxd":869
+  /* "../../venv/lib/python3.6/site-packages/numpy/__init__.pxd":869
  * 
  * cdef inline void set_array_base(ndarray arr, object base):
  *     Py_INCREF(base) # important to do this before stealing the reference below!             # <<<<<<<<<<<<<<
@@ -2911,7 +2911,7 @@ static CYTHON_INLINE void __pyx_f_5numpy_set_array_base(PyArrayObject *__pyx_v_a
  */
   Py_INCREF(__pyx_v_base);
 
-  /* "../venv/lib/python3.6/site-packages/numpy/__init__.pxd":870
+  /* "../../venv/lib/python3.6/site-packages/numpy/__init__.pxd":870
  * cdef inline void set_array_base(ndarray arr, object base):
  *     Py_INCREF(base) # important to do this before stealing the reference below!
  *     PyArray_SetBaseObject(arr, base)             # <<<<<<<<<<<<<<
@@ -2920,7 +2920,7 @@ static CYTHON_INLINE void __pyx_f_5numpy_set_array_base(PyArrayObject *__pyx_v_a
  */
   (void)(PyArray_SetBaseObject(__pyx_v_arr, __pyx_v_base));
 
-  /* "../venv/lib/python3.6/site-packages/numpy/__init__.pxd":868
+  /* "../../venv/lib/python3.6/site-packages/numpy/__init__.pxd":868
  *     int _import_umath() except -1
  * 
  * cdef inline void set_array_base(ndarray arr, object base):             # <<<<<<<<<<<<<<
@@ -2932,7 +2932,7 @@ static CYTHON_INLINE void __pyx_f_5numpy_set_array_base(PyArrayObject *__pyx_v_a
   __Pyx_RefNannyFinishContext();
 }
 
-/* "../venv/lib/python3.6/site-packages/numpy/__init__.pxd":872
+/* "../../venv/lib/python3.6/site-packages/numpy/__init__.pxd":872
  *     PyArray_SetBaseObject(arr, base)
  * 
  * cdef inline object get_array_base(ndarray arr):             # <<<<<<<<<<<<<<
@@ -2947,7 +2947,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_get_array_base(PyArrayObject *__py
   int __pyx_t_1;
   __Pyx_RefNannySetupContext("get_array_base", 0);
 
-  /* "../venv/lib/python3.6/site-packages/numpy/__init__.pxd":873
+  /* "../../venv/lib/python3.6/site-packages/numpy/__init__.pxd":873
  * 
  * cdef inline object get_array_base(ndarray arr):
  *     base = PyArray_BASE(arr)             # <<<<<<<<<<<<<<
@@ -2956,7 +2956,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_get_array_base(PyArrayObject *__py
  */
   __pyx_v_base = PyArray_BASE(__pyx_v_arr);
 
-  /* "../venv/lib/python3.6/site-packages/numpy/__init__.pxd":874
+  /* "../../venv/lib/python3.6/site-packages/numpy/__init__.pxd":874
  * cdef inline object get_array_base(ndarray arr):
  *     base = PyArray_BASE(arr)
  *     if base is NULL:             # <<<<<<<<<<<<<<
@@ -2966,7 +2966,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_get_array_base(PyArrayObject *__py
   __pyx_t_1 = ((__pyx_v_base == NULL) != 0);
   if (__pyx_t_1) {
 
-    /* "../venv/lib/python3.6/site-packages/numpy/__init__.pxd":875
+    /* "../../venv/lib/python3.6/site-packages/numpy/__init__.pxd":875
  *     base = PyArray_BASE(arr)
  *     if base is NULL:
  *         return None             # <<<<<<<<<<<<<<
@@ -2977,7 +2977,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_get_array_base(PyArrayObject *__py
     __pyx_r = Py_None; __Pyx_INCREF(Py_None);
     goto __pyx_L0;
 
-    /* "../venv/lib/python3.6/site-packages/numpy/__init__.pxd":874
+    /* "../../venv/lib/python3.6/site-packages/numpy/__init__.pxd":874
  * cdef inline object get_array_base(ndarray arr):
  *     base = PyArray_BASE(arr)
  *     if base is NULL:             # <<<<<<<<<<<<<<
@@ -2986,7 +2986,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_get_array_base(PyArrayObject *__py
  */
   }
 
-  /* "../venv/lib/python3.6/site-packages/numpy/__init__.pxd":876
+  /* "../../venv/lib/python3.6/site-packages/numpy/__init__.pxd":876
  *     if base is NULL:
  *         return None
  *     return <object>base             # <<<<<<<<<<<<<<
@@ -2998,7 +2998,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_get_array_base(PyArrayObject *__py
   __pyx_r = ((PyObject *)__pyx_v_base);
   goto __pyx_L0;
 
-  /* "../venv/lib/python3.6/site-packages/numpy/__init__.pxd":872
+  /* "../../venv/lib/python3.6/site-packages/numpy/__init__.pxd":872
  *     PyArray_SetBaseObject(arr, base)
  * 
  * cdef inline object get_array_base(ndarray arr):             # <<<<<<<<<<<<<<
@@ -3013,7 +3013,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_get_array_base(PyArrayObject *__py
   return __pyx_r;
 }
 
-/* "../venv/lib/python3.6/site-packages/numpy/__init__.pxd":880
+/* "../../venv/lib/python3.6/site-packages/numpy/__init__.pxd":880
  * # Versions of the import_* functions which are more suitable for
  * # Cython code.
  * cdef inline int import_array() except -1:             # <<<<<<<<<<<<<<
@@ -3037,7 +3037,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_array(void) {
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("import_array", 0);
 
-  /* "../venv/lib/python3.6/site-packages/numpy/__init__.pxd":881
+  /* "../../venv/lib/python3.6/site-packages/numpy/__init__.pxd":881
  * # Cython code.
  * cdef inline int import_array() except -1:
  *     try:             # <<<<<<<<<<<<<<
@@ -3053,7 +3053,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_array(void) {
     __Pyx_XGOTREF(__pyx_t_3);
     /*try:*/ {
 
-      /* "../venv/lib/python3.6/site-packages/numpy/__init__.pxd":882
+      /* "../../venv/lib/python3.6/site-packages/numpy/__init__.pxd":882
  * cdef inline int import_array() except -1:
  *     try:
  *         __pyx_import_array()             # <<<<<<<<<<<<<<
@@ -3062,7 +3062,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_array(void) {
  */
       __pyx_t_4 = _import_array(); if (unlikely(__pyx_t_4 == ((int)-1))) __PYX_ERR(1, 882, __pyx_L3_error)
 
-      /* "../venv/lib/python3.6/site-packages/numpy/__init__.pxd":881
+      /* "../../venv/lib/python3.6/site-packages/numpy/__init__.pxd":881
  * # Cython code.
  * cdef inline int import_array() except -1:
  *     try:             # <<<<<<<<<<<<<<
@@ -3076,7 +3076,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_array(void) {
     goto __pyx_L8_try_end;
     __pyx_L3_error:;
 
-    /* "../venv/lib/python3.6/site-packages/numpy/__init__.pxd":883
+    /* "../../venv/lib/python3.6/site-packages/numpy/__init__.pxd":883
  *     try:
  *         __pyx_import_array()
  *     except Exception:             # <<<<<<<<<<<<<<
@@ -3091,7 +3091,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_array(void) {
       __Pyx_GOTREF(__pyx_t_6);
       __Pyx_GOTREF(__pyx_t_7);
 
-      /* "../venv/lib/python3.6/site-packages/numpy/__init__.pxd":884
+      /* "../../venv/lib/python3.6/site-packages/numpy/__init__.pxd":884
  *         __pyx_import_array()
  *     except Exception:
  *         raise ImportError("numpy.core.multiarray failed to import")             # <<<<<<<<<<<<<<
@@ -3107,7 +3107,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_array(void) {
     goto __pyx_L5_except_error;
     __pyx_L5_except_error:;
 
-    /* "../venv/lib/python3.6/site-packages/numpy/__init__.pxd":881
+    /* "../../venv/lib/python3.6/site-packages/numpy/__init__.pxd":881
  * # Cython code.
  * cdef inline int import_array() except -1:
  *     try:             # <<<<<<<<<<<<<<
@@ -3122,7 +3122,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_array(void) {
     __pyx_L8_try_end:;
   }
 
-  /* "../venv/lib/python3.6/site-packages/numpy/__init__.pxd":880
+  /* "../../venv/lib/python3.6/site-packages/numpy/__init__.pxd":880
  * # Versions of the import_* functions which are more suitable for
  * # Cython code.
  * cdef inline int import_array() except -1:             # <<<<<<<<<<<<<<
@@ -3145,7 +3145,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_array(void) {
   return __pyx_r;
 }
 
-/* "../venv/lib/python3.6/site-packages/numpy/__init__.pxd":886
+/* "../../venv/lib/python3.6/site-packages/numpy/__init__.pxd":886
  *         raise ImportError("numpy.core.multiarray failed to import")
  * 
  * cdef inline int import_umath() except -1:             # <<<<<<<<<<<<<<
@@ -3169,7 +3169,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_umath(void) {
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("import_umath", 0);
 
-  /* "../venv/lib/python3.6/site-packages/numpy/__init__.pxd":887
+  /* "../../venv/lib/python3.6/site-packages/numpy/__init__.pxd":887
  * 
  * cdef inline int import_umath() except -1:
  *     try:             # <<<<<<<<<<<<<<
@@ -3185,7 +3185,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_umath(void) {
     __Pyx_XGOTREF(__pyx_t_3);
     /*try:*/ {
 
-      /* "../venv/lib/python3.6/site-packages/numpy/__init__.pxd":888
+      /* "../../venv/lib/python3.6/site-packages/numpy/__init__.pxd":888
  * cdef inline int import_umath() except -1:
  *     try:
  *         _import_umath()             # <<<<<<<<<<<<<<
@@ -3194,7 +3194,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_umath(void) {
  */
       __pyx_t_4 = _import_umath(); if (unlikely(__pyx_t_4 == ((int)-1))) __PYX_ERR(1, 888, __pyx_L3_error)
 
-      /* "../venv/lib/python3.6/site-packages/numpy/__init__.pxd":887
+      /* "../../venv/lib/python3.6/site-packages/numpy/__init__.pxd":887
  * 
  * cdef inline int import_umath() except -1:
  *     try:             # <<<<<<<<<<<<<<
@@ -3208,7 +3208,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_umath(void) {
     goto __pyx_L8_try_end;
     __pyx_L3_error:;
 
-    /* "../venv/lib/python3.6/site-packages/numpy/__init__.pxd":889
+    /* "../../venv/lib/python3.6/site-packages/numpy/__init__.pxd":889
  *     try:
  *         _import_umath()
  *     except Exception:             # <<<<<<<<<<<<<<
@@ -3223,7 +3223,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_umath(void) {
       __Pyx_GOTREF(__pyx_t_6);
       __Pyx_GOTREF(__pyx_t_7);
 
-      /* "../venv/lib/python3.6/site-packages/numpy/__init__.pxd":890
+      /* "../../venv/lib/python3.6/site-packages/numpy/__init__.pxd":890
  *         _import_umath()
  *     except Exception:
  *         raise ImportError("numpy.core.umath failed to import")             # <<<<<<<<<<<<<<
@@ -3239,7 +3239,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_umath(void) {
     goto __pyx_L5_except_error;
     __pyx_L5_except_error:;
 
-    /* "../venv/lib/python3.6/site-packages/numpy/__init__.pxd":887
+    /* "../../venv/lib/python3.6/site-packages/numpy/__init__.pxd":887
  * 
  * cdef inline int import_umath() except -1:
  *     try:             # <<<<<<<<<<<<<<
@@ -3254,7 +3254,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_umath(void) {
     __pyx_L8_try_end:;
   }
 
-  /* "../venv/lib/python3.6/site-packages/numpy/__init__.pxd":886
+  /* "../../venv/lib/python3.6/site-packages/numpy/__init__.pxd":886
  *         raise ImportError("numpy.core.multiarray failed to import")
  * 
  * cdef inline int import_umath() except -1:             # <<<<<<<<<<<<<<
@@ -3277,7 +3277,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_umath(void) {
   return __pyx_r;
 }
 
-/* "../venv/lib/python3.6/site-packages/numpy/__init__.pxd":892
+/* "../../venv/lib/python3.6/site-packages/numpy/__init__.pxd":892
  *         raise ImportError("numpy.core.umath failed to import")
  * 
  * cdef inline int import_ufunc() except -1:             # <<<<<<<<<<<<<<
@@ -3301,7 +3301,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_ufunc(void) {
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("import_ufunc", 0);
 
-  /* "../venv/lib/python3.6/site-packages/numpy/__init__.pxd":893
+  /* "../../venv/lib/python3.6/site-packages/numpy/__init__.pxd":893
  * 
  * cdef inline int import_ufunc() except -1:
  *     try:             # <<<<<<<<<<<<<<
@@ -3317,7 +3317,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_ufunc(void) {
     __Pyx_XGOTREF(__pyx_t_3);
     /*try:*/ {
 
-      /* "../venv/lib/python3.6/site-packages/numpy/__init__.pxd":894
+      /* "../../venv/lib/python3.6/site-packages/numpy/__init__.pxd":894
  * cdef inline int import_ufunc() except -1:
  *     try:
  *         _import_umath()             # <<<<<<<<<<<<<<
@@ -3326,7 +3326,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_ufunc(void) {
  */
       __pyx_t_4 = _import_umath(); if (unlikely(__pyx_t_4 == ((int)-1))) __PYX_ERR(1, 894, __pyx_L3_error)
 
-      /* "../venv/lib/python3.6/site-packages/numpy/__init__.pxd":893
+      /* "../../venv/lib/python3.6/site-packages/numpy/__init__.pxd":893
  * 
  * cdef inline int import_ufunc() except -1:
  *     try:             # <<<<<<<<<<<<<<
@@ -3340,7 +3340,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_ufunc(void) {
     goto __pyx_L8_try_end;
     __pyx_L3_error:;
 
-    /* "../venv/lib/python3.6/site-packages/numpy/__init__.pxd":895
+    /* "../../venv/lib/python3.6/site-packages/numpy/__init__.pxd":895
  *     try:
  *         _import_umath()
  *     except Exception:             # <<<<<<<<<<<<<<
@@ -3355,7 +3355,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_ufunc(void) {
       __Pyx_GOTREF(__pyx_t_6);
       __Pyx_GOTREF(__pyx_t_7);
 
-      /* "../venv/lib/python3.6/site-packages/numpy/__init__.pxd":896
+      /* "../../venv/lib/python3.6/site-packages/numpy/__init__.pxd":896
  *         _import_umath()
  *     except Exception:
  *         raise ImportError("numpy.core.umath failed to import")             # <<<<<<<<<<<<<<
@@ -3371,7 +3371,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_ufunc(void) {
     goto __pyx_L5_except_error;
     __pyx_L5_except_error:;
 
-    /* "../venv/lib/python3.6/site-packages/numpy/__init__.pxd":893
+    /* "../../venv/lib/python3.6/site-packages/numpy/__init__.pxd":893
  * 
  * cdef inline int import_ufunc() except -1:
  *     try:             # <<<<<<<<<<<<<<
@@ -3386,7 +3386,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_ufunc(void) {
     __pyx_L8_try_end:;
   }
 
-  /* "../venv/lib/python3.6/site-packages/numpy/__init__.pxd":892
+  /* "../../venv/lib/python3.6/site-packages/numpy/__init__.pxd":892
  *         raise ImportError("numpy.core.umath failed to import")
  * 
  * cdef inline int import_ufunc() except -1:             # <<<<<<<<<<<<<<
@@ -3416,17 +3416,17 @@ static PyMethodDef __pyx_methods[] = {
 #if PY_MAJOR_VERSION >= 3
 #if CYTHON_PEP489_MULTI_PHASE_INIT
 static PyObject* __pyx_pymod_create(PyObject *spec, PyModuleDef *def); /*proto*/
-static int __pyx_pymod_exec_cython_version(PyObject* module); /*proto*/
+static int __pyx_pymod_exec_line_rasterization(PyObject* module); /*proto*/
 static PyModuleDef_Slot __pyx_moduledef_slots[] = {
   {Py_mod_create, (void*)__pyx_pymod_create},
-  {Py_mod_exec, (void*)__pyx_pymod_exec_cython_version},
+  {Py_mod_exec, (void*)__pyx_pymod_exec_line_rasterization},
   {0, NULL}
 };
 #endif
 
 static struct PyModuleDef __pyx_moduledef = {
     PyModuleDef_HEAD_INIT,
-    "cython_version",
+    "line_rasterization",
     0, /* m_doc */
   #if CYTHON_PEP489_MULTI_PHASE_INIT
     0, /* m_size */
@@ -3457,8 +3457,6 @@ static struct PyModuleDef __pyx_moduledef = {
 static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_ImportError, __pyx_k_ImportError, sizeof(__pyx_k_ImportError), 0, 0, 1, 1},
   {&__pyx_n_s_cline_in_traceback, __pyx_k_cline_in_traceback, sizeof(__pyx_k_cline_in_traceback), 0, 0, 1, 1},
-  {&__pyx_n_s_cython_version, __pyx_k_cython_version, sizeof(__pyx_k_cython_version), 0, 0, 1, 1},
-  {&__pyx_kp_s_cython_version_pyx, __pyx_k_cython_version_pyx, sizeof(__pyx_k_cython_version_pyx), 0, 0, 1, 0},
   {&__pyx_n_s_dtype, __pyx_k_dtype, sizeof(__pyx_k_dtype), 0, 0, 1, 1},
   {&__pyx_n_s_end_points, __pyx_k_end_points, sizeof(__pyx_k_end_points), 0, 0, 1, 1},
   {&__pyx_n_s_grid, __pyx_k_grid, sizeof(__pyx_k_grid), 0, 0, 1, 1},
@@ -3466,6 +3464,8 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_import, __pyx_k_import, sizeof(__pyx_k_import), 0, 0, 1, 1},
   {&__pyx_n_s_int32, __pyx_k_int32, sizeof(__pyx_k_int32), 0, 0, 1, 1},
   {&__pyx_n_s_k, __pyx_k_k, sizeof(__pyx_k_k), 0, 0, 1, 1},
+  {&__pyx_n_s_line_rasterization, __pyx_k_line_rasterization, sizeof(__pyx_k_line_rasterization), 0, 0, 1, 1},
+  {&__pyx_kp_s_line_rasterization_pyx, __pyx_k_line_rasterization_pyx, sizeof(__pyx_k_line_rasterization_pyx), 0, 0, 1, 0},
   {&__pyx_n_s_main, __pyx_k_main, sizeof(__pyx_k_main), 0, 0, 1, 1},
   {&__pyx_n_s_name, __pyx_k_name, sizeof(__pyx_k_name), 0, 0, 1, 1},
   {&__pyx_n_s_np, __pyx_k_np, sizeof(__pyx_k_np), 0, 0, 1, 1},
@@ -3496,7 +3496,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__Pyx_InitCachedConstants", 0);
 
-  /* "../venv/lib/python3.6/site-packages/numpy/__init__.pxd":884
+  /* "../../venv/lib/python3.6/site-packages/numpy/__init__.pxd":884
  *         __pyx_import_array()
  *     except Exception:
  *         raise ImportError("numpy.core.multiarray failed to import")             # <<<<<<<<<<<<<<
@@ -3507,7 +3507,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple_);
   __Pyx_GIVEREF(__pyx_tuple_);
 
-  /* "../venv/lib/python3.6/site-packages/numpy/__init__.pxd":890
+  /* "../../venv/lib/python3.6/site-packages/numpy/__init__.pxd":890
  *         _import_umath()
  *     except Exception:
  *         raise ImportError("numpy.core.umath failed to import")             # <<<<<<<<<<<<<<
@@ -3518,7 +3518,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__2);
   __Pyx_GIVEREF(__pyx_tuple__2);
 
-  /* "cython_version.pyx":50
+  /* "line_rasterization.pyx":50
  * 
  * 
  * def rasterize_lines(np.ndarray[long, ndim=2] start_points,             # <<<<<<<<<<<<<<
@@ -3528,7 +3528,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __pyx_tuple__3 = PyTuple_Pack(10, __pyx_n_s_start_points, __pyx_n_s_end_points, __pyx_n_s_grid_dim, __pyx_n_s_k, __pyx_n_s_nrows, __pyx_n_s_x0, __pyx_n_s_y0, __pyx_n_s_x1, __pyx_n_s_y1, __pyx_n_s_grid); if (unlikely(!__pyx_tuple__3)) __PYX_ERR(0, 50, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__3);
   __Pyx_GIVEREF(__pyx_tuple__3);
-  __pyx_codeobj__4 = (PyObject*)__Pyx_PyCode_New(3, 0, 10, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__3, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_cython_version_pyx, __pyx_n_s_rasterize_lines, 50, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__4)) __PYX_ERR(0, 50, __pyx_L1_error)
+  __pyx_codeobj__4 = (PyObject*)__Pyx_PyCode_New(3, 0, 10, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__3, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_line_rasterization_pyx, __pyx_n_s_rasterize_lines, 50, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__4)) __PYX_ERR(0, 50, __pyx_L1_error)
   __Pyx_RefNannyFinishContext();
   return 0;
   __pyx_L1_error:;
@@ -3652,11 +3652,11 @@ static int __Pyx_modinit_function_import_code(void) {
 
 
 #if PY_MAJOR_VERSION < 3
-__Pyx_PyMODINIT_FUNC initcython_version(void) CYTHON_SMALL_CODE; /*proto*/
-__Pyx_PyMODINIT_FUNC initcython_version(void)
+__Pyx_PyMODINIT_FUNC initline_rasterization(void) CYTHON_SMALL_CODE; /*proto*/
+__Pyx_PyMODINIT_FUNC initline_rasterization(void)
 #else
-__Pyx_PyMODINIT_FUNC PyInit_cython_version(void) CYTHON_SMALL_CODE; /*proto*/
-__Pyx_PyMODINIT_FUNC PyInit_cython_version(void)
+__Pyx_PyMODINIT_FUNC PyInit_line_rasterization(void) CYTHON_SMALL_CODE; /*proto*/
+__Pyx_PyMODINIT_FUNC PyInit_line_rasterization(void)
 #if CYTHON_PEP489_MULTI_PHASE_INIT
 {
   return PyModuleDef_Init(&__pyx_moduledef);
@@ -3723,7 +3723,7 @@ bad:
 }
 
 
-static CYTHON_SMALL_CODE int __pyx_pymod_exec_cython_version(PyObject *__pyx_pyinit_module)
+static CYTHON_SMALL_CODE int __pyx_pymod_exec_line_rasterization(PyObject *__pyx_pyinit_module)
 #endif
 #endif
 {
@@ -3735,7 +3735,7 @@ static CYTHON_SMALL_CODE int __pyx_pymod_exec_cython_version(PyObject *__pyx_pyi
   #if CYTHON_PEP489_MULTI_PHASE_INIT
   if (__pyx_m) {
     if (__pyx_m == __pyx_pyinit_module) return 0;
-    PyErr_SetString(PyExc_RuntimeError, "Module 'cython_version' has already been imported. Re-initialisation is not supported.");
+    PyErr_SetString(PyExc_RuntimeError, "Module 'line_rasterization' has already been imported. Re-initialisation is not supported.");
     return -1;
   }
   #elif PY_MAJOR_VERSION >= 3
@@ -3750,7 +3750,7 @@ if (!__Pyx_RefNanny) {
       Py_FatalError("failed to import 'refnanny' module");
 }
 #endif
-  __Pyx_RefNannySetupContext("__Pyx_PyMODINIT_FUNC PyInit_cython_version(void)", 0);
+  __Pyx_RefNannySetupContext("__Pyx_PyMODINIT_FUNC PyInit_line_rasterization(void)", 0);
   if (__Pyx_check_binary_version() < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   #ifdef __Pxy_PyFrame_Initialize_Offsets
   __Pxy_PyFrame_Initialize_Offsets();
@@ -3787,7 +3787,7 @@ if (!__Pyx_RefNanny) {
   Py_INCREF(__pyx_m);
   #else
   #if PY_MAJOR_VERSION < 3
-  __pyx_m = Py_InitModule4("cython_version", __pyx_methods, 0, 0, PYTHON_API_VERSION); Py_XINCREF(__pyx_m);
+  __pyx_m = Py_InitModule4("line_rasterization", __pyx_methods, 0, 0, PYTHON_API_VERSION); Py_XINCREF(__pyx_m);
   #else
   __pyx_m = PyModule_Create(&__pyx_moduledef);
   #endif
@@ -3805,14 +3805,14 @@ if (!__Pyx_RefNanny) {
   #if PY_MAJOR_VERSION < 3 && (__PYX_DEFAULT_STRING_ENCODING_IS_ASCII || __PYX_DEFAULT_STRING_ENCODING_IS_DEFAULT)
   if (__Pyx_init_sys_getdefaultencoding_params() < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   #endif
-  if (__pyx_module_is_main_cython_version) {
+  if (__pyx_module_is_main_line_rasterization) {
     if (PyObject_SetAttr(__pyx_m, __pyx_n_s_name, __pyx_n_s_main) < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   }
   #if PY_MAJOR_VERSION >= 3
   {
     PyObject *modules = PyImport_GetModuleDict(); if (unlikely(!modules)) __PYX_ERR(0, 1, __pyx_L1_error)
-    if (!PyDict_GetItemString(modules, "cython_version")) {
-      if (unlikely(PyDict_SetItemString(modules, "cython_version", __pyx_m) < 0)) __PYX_ERR(0, 1, __pyx_L1_error)
+    if (!PyDict_GetItemString(modules, "line_rasterization")) {
+      if (unlikely(PyDict_SetItemString(modules, "line_rasterization", __pyx_m) < 0)) __PYX_ERR(0, 1, __pyx_L1_error)
     }
   }
   #endif
@@ -3833,7 +3833,7 @@ if (!__Pyx_RefNanny) {
   if (__Pyx_patch_abc() < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   #endif
 
-  /* "cython_version.pyx":1
+  /* "line_rasterization.pyx":1
  * import numpy as np             # <<<<<<<<<<<<<<
  * cimport numpy as np
  * cimport cython
@@ -3843,19 +3843,19 @@ if (!__Pyx_RefNanny) {
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_np, __pyx_t_1) < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "cython_version.pyx":50
+  /* "line_rasterization.pyx":50
  * 
  * 
  * def rasterize_lines(np.ndarray[long, ndim=2] start_points,             # <<<<<<<<<<<<<<
  *                     np.ndarray[long, ndim=2] end_points,
  *                     tuple grid_dim) -> np.ndarray[np.int32]:
  */
-  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_14cython_version_1rasterize_lines, NULL, __pyx_n_s_cython_version); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 50, __pyx_L1_error)
+  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_18line_rasterization_1rasterize_lines, NULL, __pyx_n_s_line_rasterization); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 50, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_rasterize_lines, __pyx_t_1) < 0) __PYX_ERR(0, 50, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "cython_version.pyx":1
+  /* "line_rasterization.pyx":1
  * import numpy as np             # <<<<<<<<<<<<<<
  * cimport numpy as np
  * cimport cython
@@ -3865,7 +3865,7 @@ if (!__Pyx_RefNanny) {
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_test, __pyx_t_1) < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "../venv/lib/python3.6/site-packages/numpy/__init__.pxd":892
+  /* "../../venv/lib/python3.6/site-packages/numpy/__init__.pxd":892
  *         raise ImportError("numpy.core.umath failed to import")
  * 
  * cdef inline int import_ufunc() except -1:             # <<<<<<<<<<<<<<
@@ -3880,11 +3880,11 @@ if (!__Pyx_RefNanny) {
   __Pyx_XDECREF(__pyx_t_1);
   if (__pyx_m) {
     if (__pyx_d) {
-      __Pyx_AddTraceback("init cython_version", __pyx_clineno, __pyx_lineno, __pyx_filename);
+      __Pyx_AddTraceback("init line_rasterization", __pyx_clineno, __pyx_lineno, __pyx_filename);
     }
     Py_CLEAR(__pyx_m);
   } else if (!PyErr_Occurred()) {
-    PyErr_SetString(PyExc_ImportError, "init cython_version");
+    PyErr_SetString(PyExc_ImportError, "init line_rasterization");
   }
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();

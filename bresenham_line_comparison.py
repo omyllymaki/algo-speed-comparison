@@ -3,11 +3,13 @@ import time
 import numpy as np
 from matplotlib import pyplot as plt
 
-from bresenham_line import python_version, numba_version, cython_version
+from bresenham_line.cython.line_rasterization import rasterize_lines as rasterize_lines_cython
+from bresenham_line.numba.line_rasterization import rasterize_lines as rasterize_lines_numba
+from bresenham_line.python.line_rasterization import rasterize_lines as rasterize_lines_py
 
 import sys
-sys.path.append("/home/ossi/Repos/Personal/algo-speed-comparison/bresenham_line/build")
-from example import rasterize_lines
+sys.path.append("bresenham_line/c++/build")
+from line_rasterization_module import rasterize_lines as rasterize_lines_cplusplus
 
 
 def comparison():
@@ -24,14 +26,14 @@ def comparison():
     print(f"grid size: {grid_dim}")
 
     methods = {
-        "python": python_version.rasterize_lines,
-        "numba": numba_version.rasterize_lines,
-        "cython": cython_version.rasterize_lines,
-        "C++ binding": rasterize_lines
+        "python": rasterize_lines_py,
+        "numba": rasterize_lines_numba,
+        "cython": rasterize_lines_cython,
+        "C++ binding": rasterize_lines_cplusplus
     }
 
     # Run numba version once before analysis to compile
-    numba_version.rasterize_lines(start_points_int[:2], end_points_int[:2], grid_dim)
+    rasterize_lines_numba(start_points_int[:2], end_points_int[:2], grid_dim)
 
     for method_name, method in methods.items():
 

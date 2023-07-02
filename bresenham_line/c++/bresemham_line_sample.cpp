@@ -53,8 +53,8 @@ MatrixXd readMatrix(const char *filename)
 
 int main()
 {
-    auto start_points = readMatrix("../../data/start_points_int.txt");
-    auto end_points = readMatrix("../../data/end_points_int.txt");
+    auto start_points = readMatrix("../../../data/start_points_int.txt");
+    auto end_points = readMatrix("../../../data/end_points_int.txt");
 
     MatrixXi start_points_int = start_points.cast<int>();
     MatrixXi end_points_int = end_points.cast<int>();

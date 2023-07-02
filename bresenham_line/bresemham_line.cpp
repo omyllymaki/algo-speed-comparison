@@ -7,28 +7,10 @@ void bresemham_line::fill_grid_with_bresenham_line(size_t x0, size_t y0, size_t 
     int e2, sx, sy, error;
     int dx, dy;
 
-    if (x1 > x0)
-    {
-        dx = x1 - x0;
-        sx = 1;
-    }
-    else
-    {
-        dx = x0 - x1;
-        sx = -1;
-    }
-
-    if (y1 > y0)
-    {
-        dy = y0 - y1;
-        sy = 1;
-    }
-    else
-    {
-        dy = y1 - y0;
-        sy = -1;
-    }
-
+    dx = abs(static_cast<int>(x1 - x0));
+    sx = (x0 < x1) ? 1 : -1;
+    dy = -abs(static_cast<int>(y1 - y0));
+    sy = (y0 < y1) ? 1 : -1;
     error = dx + dy;
 
     while (true)

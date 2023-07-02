@@ -56,21 +56,15 @@ int main()
     auto start_points = readMatrix("../../data/start_points_int.txt");
     auto end_points = readMatrix("../../data/end_points_int.txt");
 
-    MatrixXi start_points_int = start_points.cast <int> ();
-    MatrixXi end_points_int = end_points.cast <int> ();
+    MatrixXi start_points_int = start_points.cast<int>();
+    MatrixXi end_points_int = end_points.cast<int>();
 
-    Eigen::MatrixXi grid;
-    grid.resize(134, 134);
-
-    auto startTime = std::chrono::high_resolution_clock::now();
-    bresemham_line::fill_grid_with_bresenham_lines(start_points_int, end_points_int, grid);
-    auto endTime = std::chrono::high_resolution_clock::now();
-    auto duration = std::chrono::duration_cast<std::chrono::microseconds>(endTime - startTime).count()/1000000.0;
-    std::cout << duration << std::endl;
-    size_t nLinesPerSecond = start_points_int.rows() / duration;
-    std::cout << "Calculated " << nLinesPerSecond << " lines per second" << std::endl; 
-
-    
+    auto start_time = std::chrono::high_resolution_clock::now();
+    auto grid = bresemham_line::rasterize_lines(start_points_int, end_points_int, {134, 134});
+    auto end_time = std::chrono::high_resolution_clock::now();
+    auto duration = std::chrono::duration_cast<std::chrono::microseconds>(end_time - start_time).count() / 1000000.0;
+    size_t n_lines_per_second = start_points_int.rows() / duration;
+    std::cout << "Calculated " << n_lines_per_second << " lines per second" << std::endl;
 
     return 0;
 }

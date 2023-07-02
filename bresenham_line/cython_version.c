@@ -1430,8 +1430,65 @@ static int __Pyx_ParseOptionalKeywords(PyObject *kwds, PyObject **argnames[],\
         __Pyx__ArgTypeTest(obj, type, name, exact))
 static int __Pyx__ArgTypeTest(PyObject *obj, PyTypeObject *type, const char *name, int exact);
 
+/* PyDictVersioning.proto */
+#if CYTHON_USE_DICT_VERSIONS && CYTHON_USE_TYPE_SLOTS
+#define __PYX_DICT_VERSION_INIT  ((PY_UINT64_T) -1)
+#define __PYX_GET_DICT_VERSION(dict)  (((PyDictObject*)(dict))->ma_version_tag)
+#define __PYX_UPDATE_DICT_CACHE(dict, value, cache_var, version_var)\
+    (version_var) = __PYX_GET_DICT_VERSION(dict);\
+    (cache_var) = (value);
+#define __PYX_PY_DICT_LOOKUP_IF_MODIFIED(VAR, DICT, LOOKUP) {\
+    static PY_UINT64_T __pyx_dict_version = 0;\
+    static PyObject *__pyx_dict_cached_value = NULL;\
+    if (likely(__PYX_GET_DICT_VERSION(DICT) == __pyx_dict_version)) {\
+        (VAR) = __pyx_dict_cached_value;\
+    } else {\
+        (VAR) = __pyx_dict_cached_value = (LOOKUP);\
+        __pyx_dict_version = __PYX_GET_DICT_VERSION(DICT);\
+    }\
+}
+static CYTHON_INLINE PY_UINT64_T __Pyx_get_tp_dict_version(PyObject *obj);
+static CYTHON_INLINE PY_UINT64_T __Pyx_get_object_dict_version(PyObject *obj);
+static CYTHON_INLINE int __Pyx_object_dict_version_matches(PyObject* obj, PY_UINT64_T tp_dict_version, PY_UINT64_T obj_dict_version);
+#else
+#define __PYX_GET_DICT_VERSION(dict)  (0)
+#define __PYX_UPDATE_DICT_CACHE(dict, value, cache_var, version_var)
+#define __PYX_PY_DICT_LOOKUP_IF_MODIFIED(VAR, DICT, LOOKUP)  (VAR) = (LOOKUP);
+#endif
+
+/* GetModuleGlobalName.proto */
+#if CYTHON_USE_DICT_VERSIONS
+#define __Pyx_GetModuleGlobalName(var, name)  do {\
+    static PY_UINT64_T __pyx_dict_version = 0;\
+    static PyObject *__pyx_dict_cached_value = NULL;\
+    (var) = (likely(__pyx_dict_version == __PYX_GET_DICT_VERSION(__pyx_d))) ?\
+        (likely(__pyx_dict_cached_value) ? __Pyx_NewRef(__pyx_dict_cached_value) : __Pyx_GetBuiltinName(name)) :\
+        __Pyx__GetModuleGlobalName(name, &__pyx_dict_version, &__pyx_dict_cached_value);\
+} while(0)
+#define __Pyx_GetModuleGlobalNameUncached(var, name)  do {\
+    PY_UINT64_T __pyx_dict_version;\
+    PyObject *__pyx_dict_cached_value;\
+    (var) = __Pyx__GetModuleGlobalName(name, &__pyx_dict_version, &__pyx_dict_cached_value);\
+} while(0)
+static PyObject *__Pyx__GetModuleGlobalName(PyObject *name, PY_UINT64_T *dict_version, PyObject **dict_cached_value);
+#else
+#define __Pyx_GetModuleGlobalName(var, name)  (var) = __Pyx__GetModuleGlobalName(name)
+#define __Pyx_GetModuleGlobalNameUncached(var, name)  (var) = __Pyx__GetModuleGlobalName(name)
+static CYTHON_INLINE PyObject *__Pyx__GetModuleGlobalName(PyObject *name);
+#endif
+
+/* PyObjectCall.proto */
+#if CYTHON_COMPILING_IN_CPYTHON
+static CYTHON_INLINE PyObject* __Pyx_PyObject_Call(PyObject *func, PyObject *arg, PyObject *kw);
+#else
+#define __Pyx_PyObject_Call(func, arg, kw) PyObject_Call(func, arg, kw)
+#endif
+
 /* BufferIndexError.proto */
 static void __Pyx_RaiseBufferIndexError(int axis);
+
+/* ExtTypeTest.proto */
+static CYTHON_INLINE int __Pyx_TypeTest(PyObject *obj, PyTypeObject *type);
 
 /* GetTopmostException.proto */
 #if CYTHON_USE_EXC_INFO_STACK
@@ -1465,13 +1522,6 @@ static int __Pyx__GetException(PyThreadState *tstate, PyObject **type, PyObject 
 static int __Pyx_GetException(PyObject **type, PyObject **value, PyObject **tb);
 #endif
 
-/* PyObjectCall.proto */
-#if CYTHON_COMPILING_IN_CPYTHON
-static CYTHON_INLINE PyObject* __Pyx_PyObject_Call(PyObject *func, PyObject *arg, PyObject *kw);
-#else
-#define __Pyx_PyObject_Call(func, arg, kw) PyObject_Call(func, arg, kw)
-#endif
-
 /* RaiseException.proto */
 static void __Pyx_Raise(PyObject *type, PyObject *value, PyObject *tb, PyObject *cause);
 
@@ -1496,32 +1546,6 @@ static PyTypeObject *__Pyx_ImportType_0_29_35(PyObject* module, const char *modu
 
 /* Import.proto */
 static PyObject *__Pyx_Import(PyObject *name, PyObject *from_list, int level);
-
-/* PyDictVersioning.proto */
-#if CYTHON_USE_DICT_VERSIONS && CYTHON_USE_TYPE_SLOTS
-#define __PYX_DICT_VERSION_INIT  ((PY_UINT64_T) -1)
-#define __PYX_GET_DICT_VERSION(dict)  (((PyDictObject*)(dict))->ma_version_tag)
-#define __PYX_UPDATE_DICT_CACHE(dict, value, cache_var, version_var)\
-    (version_var) = __PYX_GET_DICT_VERSION(dict);\
-    (cache_var) = (value);
-#define __PYX_PY_DICT_LOOKUP_IF_MODIFIED(VAR, DICT, LOOKUP) {\
-    static PY_UINT64_T __pyx_dict_version = 0;\
-    static PyObject *__pyx_dict_cached_value = NULL;\
-    if (likely(__PYX_GET_DICT_VERSION(DICT) == __pyx_dict_version)) {\
-        (VAR) = __pyx_dict_cached_value;\
-    } else {\
-        (VAR) = __pyx_dict_cached_value = (LOOKUP);\
-        __pyx_dict_version = __PYX_GET_DICT_VERSION(DICT);\
-    }\
-}
-static CYTHON_INLINE PY_UINT64_T __Pyx_get_tp_dict_version(PyObject *obj);
-static CYTHON_INLINE PY_UINT64_T __Pyx_get_object_dict_version(PyObject *obj);
-static CYTHON_INLINE int __Pyx_object_dict_version_matches(PyObject* obj, PY_UINT64_T tp_dict_version, PY_UINT64_T obj_dict_version);
-#else
-#define __PYX_GET_DICT_VERSION(dict)  (0)
-#define __PYX_UPDATE_DICT_CACHE(dict, value, cache_var, version_var)
-#define __PYX_PY_DICT_LOOKUP_IF_MODIFIED(VAR, DICT, LOOKUP)  (VAR) = (LOOKUP);
-#endif
 
 /* CLineInTraceback.proto */
 #ifdef CYTHON_CLINE_IN_TRACEBACK
@@ -1761,27 +1785,33 @@ static const char __pyx_k_grid[] = "grid";
 static const char __pyx_k_main[] = "__main__";
 static const char __pyx_k_name[] = "__name__";
 static const char __pyx_k_test[] = "__test__";
+static const char __pyx_k_dtype[] = "dtype";
+static const char __pyx_k_int32[] = "int32";
 static const char __pyx_k_nrows[] = "nrows";
 static const char __pyx_k_numpy[] = "numpy";
 static const char __pyx_k_range[] = "range";
+static const char __pyx_k_zeros[] = "zeros";
 static const char __pyx_k_import[] = "__import__";
+static const char __pyx_k_grid_dim[] = "grid_dim";
 static const char __pyx_k_end_points[] = "end_points";
 static const char __pyx_k_ImportError[] = "ImportError";
 static const char __pyx_k_start_points[] = "start_points";
 static const char __pyx_k_cython_version[] = "cython_version";
+static const char __pyx_k_rasterize_lines[] = "rasterize_lines";
 static const char __pyx_k_cline_in_traceback[] = "cline_in_traceback";
 static const char __pyx_k_cython_version_pyx[] = "cython_version.pyx";
-static const char __pyx_k_fill_grid_with_bresenham_lines[] = "fill_grid_with_bresenham_lines";
 static const char __pyx_k_numpy_core_multiarray_failed_to[] = "numpy.core.multiarray failed to import";
 static const char __pyx_k_numpy_core_umath_failed_to_impor[] = "numpy.core.umath failed to import";
 static PyObject *__pyx_n_s_ImportError;
 static PyObject *__pyx_n_s_cline_in_traceback;
 static PyObject *__pyx_n_s_cython_version;
 static PyObject *__pyx_kp_s_cython_version_pyx;
+static PyObject *__pyx_n_s_dtype;
 static PyObject *__pyx_n_s_end_points;
-static PyObject *__pyx_n_s_fill_grid_with_bresenham_lines;
 static PyObject *__pyx_n_s_grid;
+static PyObject *__pyx_n_s_grid_dim;
 static PyObject *__pyx_n_s_import;
+static PyObject *__pyx_n_s_int32;
 static PyObject *__pyx_n_s_k;
 static PyObject *__pyx_n_s_main;
 static PyObject *__pyx_n_s_name;
@@ -1791,13 +1821,15 @@ static PyObject *__pyx_n_s_numpy;
 static PyObject *__pyx_kp_s_numpy_core_multiarray_failed_to;
 static PyObject *__pyx_kp_s_numpy_core_umath_failed_to_impor;
 static PyObject *__pyx_n_s_range;
+static PyObject *__pyx_n_s_rasterize_lines;
 static PyObject *__pyx_n_s_start_points;
 static PyObject *__pyx_n_s_test;
 static PyObject *__pyx_n_s_x0;
 static PyObject *__pyx_n_s_x1;
 static PyObject *__pyx_n_s_y0;
 static PyObject *__pyx_n_s_y1;
-static PyObject *__pyx_pf_14cython_version_fill_grid_with_bresenham_lines(CYTHON_UNUSED PyObject *__pyx_self, PyArrayObject *__pyx_v_start_points, PyArrayObject *__pyx_v_end_points, PyArrayObject *__pyx_v_grid); /* proto */
+static PyObject *__pyx_n_s_zeros;
+static PyObject *__pyx_pf_14cython_version_rasterize_lines(CYTHON_UNUSED PyObject *__pyx_self, PyArrayObject *__pyx_v_start_points, PyArrayObject *__pyx_v_end_points, PyObject *__pyx_v_grid_dim); /* proto */
 static PyObject *__pyx_tuple_;
 static PyObject *__pyx_tuple__2;
 static PyObject *__pyx_tuple__3;
@@ -2204,26 +2236,26 @@ static int __pyx_f_14cython_version_fill_grid_with_bresenham_line(unsigned int _
 /* "cython_version.pyx":50
  * 
  * 
- * def fill_grid_with_bresenham_lines(np.ndarray[long, ndim=2] start_points,             # <<<<<<<<<<<<<<
- *                                    np.ndarray[long, ndim=2] end_points,
- *                                    np.ndarray[np.int32_t, ndim=2] grid):
+ * def rasterize_lines(np.ndarray[long, ndim=2] start_points,             # <<<<<<<<<<<<<<
+ *                     np.ndarray[long, ndim=2] end_points,
+ *                     tuple grid_dim) -> np.ndarray[np.int32]:
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_14cython_version_1fill_grid_with_bresenham_lines(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyMethodDef __pyx_mdef_14cython_version_1fill_grid_with_bresenham_lines = {"fill_grid_with_bresenham_lines", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_14cython_version_1fill_grid_with_bresenham_lines, METH_VARARGS|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_14cython_version_1fill_grid_with_bresenham_lines(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_14cython_version_1rasterize_lines(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyMethodDef __pyx_mdef_14cython_version_1rasterize_lines = {"rasterize_lines", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_14cython_version_1rasterize_lines, METH_VARARGS|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_14cython_version_1rasterize_lines(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyArrayObject *__pyx_v_start_points = 0;
   PyArrayObject *__pyx_v_end_points = 0;
-  PyArrayObject *__pyx_v_grid = 0;
+  PyObject *__pyx_v_grid_dim = 0;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("fill_grid_with_bresenham_lines (wrapper)", 0);
+  __Pyx_RefNannySetupContext("rasterize_lines (wrapper)", 0);
   {
-    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_start_points,&__pyx_n_s_end_points,&__pyx_n_s_grid,0};
+    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_start_points,&__pyx_n_s_end_points,&__pyx_n_s_grid_dim,0};
     PyObject* values[3] = {0,0,0};
     if (unlikely(__pyx_kwds)) {
       Py_ssize_t kw_args;
@@ -2247,17 +2279,17 @@ static PyObject *__pyx_pw_14cython_version_1fill_grid_with_bresenham_lines(PyObj
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_end_points)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("fill_grid_with_bresenham_lines", 1, 3, 3, 1); __PYX_ERR(0, 50, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("rasterize_lines", 1, 3, 3, 1); __PYX_ERR(0, 50, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
-        if (likely((values[2] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_grid)) != 0)) kw_args--;
+        if (likely((values[2] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_grid_dim)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("fill_grid_with_bresenham_lines", 1, 3, 3, 2); __PYX_ERR(0, 50, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("rasterize_lines", 1, 3, 3, 2); __PYX_ERR(0, 50, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "fill_grid_with_bresenham_lines") < 0)) __PYX_ERR(0, 50, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "rasterize_lines") < 0)) __PYX_ERR(0, 50, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 3) {
       goto __pyx_L5_argtuple_error;
@@ -2268,20 +2300,20 @@ static PyObject *__pyx_pw_14cython_version_1fill_grid_with_bresenham_lines(PyObj
     }
     __pyx_v_start_points = ((PyArrayObject *)values[0]);
     __pyx_v_end_points = ((PyArrayObject *)values[1]);
-    __pyx_v_grid = ((PyArrayObject *)values[2]);
+    __pyx_v_grid_dim = ((PyObject*)values[2]);
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("fill_grid_with_bresenham_lines", 1, 3, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 50, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("rasterize_lines", 1, 3, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 50, __pyx_L3_error)
   __pyx_L3_error:;
-  __Pyx_AddTraceback("cython_version.fill_grid_with_bresenham_lines", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("cython_version.rasterize_lines", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
   if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_start_points), __pyx_ptype_5numpy_ndarray, 1, "start_points", 0))) __PYX_ERR(0, 50, __pyx_L1_error)
   if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_end_points), __pyx_ptype_5numpy_ndarray, 1, "end_points", 0))) __PYX_ERR(0, 51, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_grid), __pyx_ptype_5numpy_ndarray, 1, "grid", 0))) __PYX_ERR(0, 52, __pyx_L1_error)
-  __pyx_r = __pyx_pf_14cython_version_fill_grid_with_bresenham_lines(__pyx_self, __pyx_v_start_points, __pyx_v_end_points, __pyx_v_grid);
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_grid_dim), (&PyTuple_Type), 1, "grid_dim", 1))) __PYX_ERR(0, 52, __pyx_L1_error)
+  __pyx_r = __pyx_pf_14cython_version_rasterize_lines(__pyx_self, __pyx_v_start_points, __pyx_v_end_points, __pyx_v_grid_dim);
 
   /* function exit code */
   goto __pyx_L0;
@@ -2292,31 +2324,35 @@ static PyObject *__pyx_pw_14cython_version_1fill_grid_with_bresenham_lines(PyObj
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_14cython_version_fill_grid_with_bresenham_lines(CYTHON_UNUSED PyObject *__pyx_self, PyArrayObject *__pyx_v_start_points, PyArrayObject *__pyx_v_end_points, PyArrayObject *__pyx_v_grid) {
+static PyObject *__pyx_pf_14cython_version_rasterize_lines(CYTHON_UNUSED PyObject *__pyx_self, PyArrayObject *__pyx_v_start_points, PyArrayObject *__pyx_v_end_points, PyObject *__pyx_v_grid_dim) {
   unsigned int __pyx_v_k;
   unsigned int __pyx_v_nrows;
-  int __pyx_v_x0;
-  int __pyx_v_y0;
-  int __pyx_v_x1;
-  int __pyx_v_y1;
+  unsigned int __pyx_v_x0;
+  unsigned int __pyx_v_y0;
+  unsigned int __pyx_v_x1;
+  unsigned int __pyx_v_y1;
+  PyObject *__pyx_v_grid = NULL;
   __Pyx_LocalBuf_ND __pyx_pybuffernd_end_points;
   __Pyx_Buffer __pyx_pybuffer_end_points;
-  __Pyx_LocalBuf_ND __pyx_pybuffernd_grid;
-  __Pyx_Buffer __pyx_pybuffer_grid;
   __Pyx_LocalBuf_ND __pyx_pybuffernd_start_points;
   __Pyx_Buffer __pyx_pybuffer_start_points;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
-  unsigned int __pyx_t_1;
-  unsigned int __pyx_t_2;
-  unsigned int __pyx_t_3;
-  size_t __pyx_t_4;
-  Py_ssize_t __pyx_t_5;
-  int __pyx_t_6;
+  PyObject *__pyx_t_1 = NULL;
+  PyObject *__pyx_t_2 = NULL;
+  PyObject *__pyx_t_3 = NULL;
+  PyObject *__pyx_t_4 = NULL;
+  PyObject *__pyx_t_5 = NULL;
+  unsigned int __pyx_t_6;
+  unsigned int __pyx_t_7;
+  unsigned int __pyx_t_8;
+  size_t __pyx_t_9;
+  Py_ssize_t __pyx_t_10;
+  int __pyx_t_11;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
-  __Pyx_RefNannySetupContext("fill_grid_with_bresenham_lines", 0);
+  __Pyx_RefNannySetupContext("rasterize_lines", 0);
   __pyx_pybuffer_start_points.pybuffer.buf = NULL;
   __pyx_pybuffer_start_points.refcount = 0;
   __pyx_pybuffernd_start_points.data = NULL;
@@ -2325,10 +2361,6 @@ static PyObject *__pyx_pf_14cython_version_fill_grid_with_bresenham_lines(CYTHON
   __pyx_pybuffer_end_points.refcount = 0;
   __pyx_pybuffernd_end_points.data = NULL;
   __pyx_pybuffernd_end_points.rcbuffer = &__pyx_pybuffer_end_points;
-  __pyx_pybuffer_grid.pybuffer.buf = NULL;
-  __pyx_pybuffer_grid.refcount = 0;
-  __pyx_pybuffernd_grid.data = NULL;
-  __pyx_pybuffernd_grid.rcbuffer = &__pyx_pybuffer_grid;
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
     if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_start_points.rcbuffer->pybuffer, (PyObject*)__pyx_v_start_points, &__Pyx_TypeInfo_long, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) __PYX_ERR(0, 50, __pyx_L1_error)
@@ -2339,14 +2371,43 @@ static PyObject *__pyx_pf_14cython_version_fill_grid_with_bresenham_lines(CYTHON
     if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_end_points.rcbuffer->pybuffer, (PyObject*)__pyx_v_end_points, &__Pyx_TypeInfo_long, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) __PYX_ERR(0, 50, __pyx_L1_error)
   }
   __pyx_pybuffernd_end_points.diminfo[0].strides = __pyx_pybuffernd_end_points.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_end_points.diminfo[0].shape = __pyx_pybuffernd_end_points.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_end_points.diminfo[1].strides = __pyx_pybuffernd_end_points.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_end_points.diminfo[1].shape = __pyx_pybuffernd_end_points.rcbuffer->pybuffer.shape[1];
-  {
-    __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_grid.rcbuffer->pybuffer, (PyObject*)__pyx_v_grid, &__Pyx_TypeInfo_nn___pyx_t_5numpy_int32_t, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) __PYX_ERR(0, 50, __pyx_L1_error)
-  }
-  __pyx_pybuffernd_grid.diminfo[0].strides = __pyx_pybuffernd_grid.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_grid.diminfo[0].shape = __pyx_pybuffernd_grid.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_grid.diminfo[1].strides = __pyx_pybuffernd_grid.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_grid.diminfo[1].shape = __pyx_pybuffernd_grid.rcbuffer->pybuffer.shape[1];
 
   /* "cython_version.pyx":56
- *     cdef int x0, y0, x1, y1
+ *     cdef unsigned x0, y0, x1, y1
+ * 
+ *     grid = np.zeros(grid_dim, dtype=np.int32)             # <<<<<<<<<<<<<<
+ * 
+ *     nrows = start_points.shape[0]
+ */
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 56, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_zeros); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 56, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_t_1 = PyTuple_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 56, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_INCREF(__pyx_v_grid_dim);
+  __Pyx_GIVEREF(__pyx_v_grid_dim);
+  PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_v_grid_dim);
+  __pyx_t_3 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 56, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 56, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_int32); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 56, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_dtype, __pyx_t_5) < 0) __PYX_ERR(0, 56, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+  __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_1, __pyx_t_3); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 56, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __pyx_v_grid = __pyx_t_5;
+  __pyx_t_5 = 0;
+
+  /* "cython_version.pyx":58
+ *     grid = np.zeros(grid_dim, dtype=np.int32)
  * 
  *     nrows = start_points.shape[0]             # <<<<<<<<<<<<<<
  * 
@@ -2354,137 +2415,152 @@ static PyObject *__pyx_pf_14cython_version_fill_grid_with_bresenham_lines(CYTHON
  */
   __pyx_v_nrows = (__pyx_v_start_points->dimensions[0]);
 
-  /* "cython_version.pyx":58
+  /* "cython_version.pyx":60
  *     nrows = start_points.shape[0]
  * 
  *     for k in range(nrows):             # <<<<<<<<<<<<<<
  *         x0 = start_points[k, 0]
  *         y0 = start_points[k, 1]
  */
-  __pyx_t_1 = __pyx_v_nrows;
-  __pyx_t_2 = __pyx_t_1;
-  for (__pyx_t_3 = 0; __pyx_t_3 < __pyx_t_2; __pyx_t_3+=1) {
-    __pyx_v_k = __pyx_t_3;
+  __pyx_t_6 = __pyx_v_nrows;
+  __pyx_t_7 = __pyx_t_6;
+  for (__pyx_t_8 = 0; __pyx_t_8 < __pyx_t_7; __pyx_t_8+=1) {
+    __pyx_v_k = __pyx_t_8;
 
-    /* "cython_version.pyx":59
+    /* "cython_version.pyx":61
  * 
  *     for k in range(nrows):
  *         x0 = start_points[k, 0]             # <<<<<<<<<<<<<<
  *         y0 = start_points[k, 1]
  *         x1 = end_points[k, 0]
  */
-    __pyx_t_4 = __pyx_v_k;
-    __pyx_t_5 = 0;
-    __pyx_t_6 = -1;
-    if (unlikely(__pyx_t_4 >= (size_t)__pyx_pybuffernd_start_points.diminfo[0].shape)) __pyx_t_6 = 0;
-    if (__pyx_t_5 < 0) {
-      __pyx_t_5 += __pyx_pybuffernd_start_points.diminfo[1].shape;
-      if (unlikely(__pyx_t_5 < 0)) __pyx_t_6 = 1;
-    } else if (unlikely(__pyx_t_5 >= __pyx_pybuffernd_start_points.diminfo[1].shape)) __pyx_t_6 = 1;
-    if (unlikely(__pyx_t_6 != -1)) {
-      __Pyx_RaiseBufferIndexError(__pyx_t_6);
-      __PYX_ERR(0, 59, __pyx_L1_error)
+    __pyx_t_9 = __pyx_v_k;
+    __pyx_t_10 = 0;
+    __pyx_t_11 = -1;
+    if (unlikely(__pyx_t_9 >= (size_t)__pyx_pybuffernd_start_points.diminfo[0].shape)) __pyx_t_11 = 0;
+    if (__pyx_t_10 < 0) {
+      __pyx_t_10 += __pyx_pybuffernd_start_points.diminfo[1].shape;
+      if (unlikely(__pyx_t_10 < 0)) __pyx_t_11 = 1;
+    } else if (unlikely(__pyx_t_10 >= __pyx_pybuffernd_start_points.diminfo[1].shape)) __pyx_t_11 = 1;
+    if (unlikely(__pyx_t_11 != -1)) {
+      __Pyx_RaiseBufferIndexError(__pyx_t_11);
+      __PYX_ERR(0, 61, __pyx_L1_error)
     }
-    __pyx_v_x0 = (*__Pyx_BufPtrStrided2d(long *, __pyx_pybuffernd_start_points.rcbuffer->pybuffer.buf, __pyx_t_4, __pyx_pybuffernd_start_points.diminfo[0].strides, __pyx_t_5, __pyx_pybuffernd_start_points.diminfo[1].strides));
+    __pyx_v_x0 = (*__Pyx_BufPtrStrided2d(long *, __pyx_pybuffernd_start_points.rcbuffer->pybuffer.buf, __pyx_t_9, __pyx_pybuffernd_start_points.diminfo[0].strides, __pyx_t_10, __pyx_pybuffernd_start_points.diminfo[1].strides));
 
-    /* "cython_version.pyx":60
+    /* "cython_version.pyx":62
  *     for k in range(nrows):
  *         x0 = start_points[k, 0]
  *         y0 = start_points[k, 1]             # <<<<<<<<<<<<<<
  *         x1 = end_points[k, 0]
  *         y1 = end_points[k, 1]
  */
-    __pyx_t_4 = __pyx_v_k;
-    __pyx_t_5 = 1;
-    __pyx_t_6 = -1;
-    if (unlikely(__pyx_t_4 >= (size_t)__pyx_pybuffernd_start_points.diminfo[0].shape)) __pyx_t_6 = 0;
-    if (__pyx_t_5 < 0) {
-      __pyx_t_5 += __pyx_pybuffernd_start_points.diminfo[1].shape;
-      if (unlikely(__pyx_t_5 < 0)) __pyx_t_6 = 1;
-    } else if (unlikely(__pyx_t_5 >= __pyx_pybuffernd_start_points.diminfo[1].shape)) __pyx_t_6 = 1;
-    if (unlikely(__pyx_t_6 != -1)) {
-      __Pyx_RaiseBufferIndexError(__pyx_t_6);
-      __PYX_ERR(0, 60, __pyx_L1_error)
+    __pyx_t_9 = __pyx_v_k;
+    __pyx_t_10 = 1;
+    __pyx_t_11 = -1;
+    if (unlikely(__pyx_t_9 >= (size_t)__pyx_pybuffernd_start_points.diminfo[0].shape)) __pyx_t_11 = 0;
+    if (__pyx_t_10 < 0) {
+      __pyx_t_10 += __pyx_pybuffernd_start_points.diminfo[1].shape;
+      if (unlikely(__pyx_t_10 < 0)) __pyx_t_11 = 1;
+    } else if (unlikely(__pyx_t_10 >= __pyx_pybuffernd_start_points.diminfo[1].shape)) __pyx_t_11 = 1;
+    if (unlikely(__pyx_t_11 != -1)) {
+      __Pyx_RaiseBufferIndexError(__pyx_t_11);
+      __PYX_ERR(0, 62, __pyx_L1_error)
     }
-    __pyx_v_y0 = (*__Pyx_BufPtrStrided2d(long *, __pyx_pybuffernd_start_points.rcbuffer->pybuffer.buf, __pyx_t_4, __pyx_pybuffernd_start_points.diminfo[0].strides, __pyx_t_5, __pyx_pybuffernd_start_points.diminfo[1].strides));
+    __pyx_v_y0 = (*__Pyx_BufPtrStrided2d(long *, __pyx_pybuffernd_start_points.rcbuffer->pybuffer.buf, __pyx_t_9, __pyx_pybuffernd_start_points.diminfo[0].strides, __pyx_t_10, __pyx_pybuffernd_start_points.diminfo[1].strides));
 
-    /* "cython_version.pyx":61
+    /* "cython_version.pyx":63
  *         x0 = start_points[k, 0]
  *         y0 = start_points[k, 1]
  *         x1 = end_points[k, 0]             # <<<<<<<<<<<<<<
  *         y1 = end_points[k, 1]
  *         fill_grid_with_bresenham_line(x0, y0, x1, y1, grid)
  */
-    __pyx_t_4 = __pyx_v_k;
-    __pyx_t_5 = 0;
-    __pyx_t_6 = -1;
-    if (unlikely(__pyx_t_4 >= (size_t)__pyx_pybuffernd_end_points.diminfo[0].shape)) __pyx_t_6 = 0;
-    if (__pyx_t_5 < 0) {
-      __pyx_t_5 += __pyx_pybuffernd_end_points.diminfo[1].shape;
-      if (unlikely(__pyx_t_5 < 0)) __pyx_t_6 = 1;
-    } else if (unlikely(__pyx_t_5 >= __pyx_pybuffernd_end_points.diminfo[1].shape)) __pyx_t_6 = 1;
-    if (unlikely(__pyx_t_6 != -1)) {
-      __Pyx_RaiseBufferIndexError(__pyx_t_6);
-      __PYX_ERR(0, 61, __pyx_L1_error)
+    __pyx_t_9 = __pyx_v_k;
+    __pyx_t_10 = 0;
+    __pyx_t_11 = -1;
+    if (unlikely(__pyx_t_9 >= (size_t)__pyx_pybuffernd_end_points.diminfo[0].shape)) __pyx_t_11 = 0;
+    if (__pyx_t_10 < 0) {
+      __pyx_t_10 += __pyx_pybuffernd_end_points.diminfo[1].shape;
+      if (unlikely(__pyx_t_10 < 0)) __pyx_t_11 = 1;
+    } else if (unlikely(__pyx_t_10 >= __pyx_pybuffernd_end_points.diminfo[1].shape)) __pyx_t_11 = 1;
+    if (unlikely(__pyx_t_11 != -1)) {
+      __Pyx_RaiseBufferIndexError(__pyx_t_11);
+      __PYX_ERR(0, 63, __pyx_L1_error)
     }
-    __pyx_v_x1 = (*__Pyx_BufPtrStrided2d(long *, __pyx_pybuffernd_end_points.rcbuffer->pybuffer.buf, __pyx_t_4, __pyx_pybuffernd_end_points.diminfo[0].strides, __pyx_t_5, __pyx_pybuffernd_end_points.diminfo[1].strides));
+    __pyx_v_x1 = (*__Pyx_BufPtrStrided2d(long *, __pyx_pybuffernd_end_points.rcbuffer->pybuffer.buf, __pyx_t_9, __pyx_pybuffernd_end_points.diminfo[0].strides, __pyx_t_10, __pyx_pybuffernd_end_points.diminfo[1].strides));
 
-    /* "cython_version.pyx":62
+    /* "cython_version.pyx":64
  *         y0 = start_points[k, 1]
  *         x1 = end_points[k, 0]
  *         y1 = end_points[k, 1]             # <<<<<<<<<<<<<<
  *         fill_grid_with_bresenham_line(x0, y0, x1, y1, grid)
+ *     return grid
  */
-    __pyx_t_4 = __pyx_v_k;
-    __pyx_t_5 = 1;
-    __pyx_t_6 = -1;
-    if (unlikely(__pyx_t_4 >= (size_t)__pyx_pybuffernd_end_points.diminfo[0].shape)) __pyx_t_6 = 0;
-    if (__pyx_t_5 < 0) {
-      __pyx_t_5 += __pyx_pybuffernd_end_points.diminfo[1].shape;
-      if (unlikely(__pyx_t_5 < 0)) __pyx_t_6 = 1;
-    } else if (unlikely(__pyx_t_5 >= __pyx_pybuffernd_end_points.diminfo[1].shape)) __pyx_t_6 = 1;
-    if (unlikely(__pyx_t_6 != -1)) {
-      __Pyx_RaiseBufferIndexError(__pyx_t_6);
-      __PYX_ERR(0, 62, __pyx_L1_error)
+    __pyx_t_9 = __pyx_v_k;
+    __pyx_t_10 = 1;
+    __pyx_t_11 = -1;
+    if (unlikely(__pyx_t_9 >= (size_t)__pyx_pybuffernd_end_points.diminfo[0].shape)) __pyx_t_11 = 0;
+    if (__pyx_t_10 < 0) {
+      __pyx_t_10 += __pyx_pybuffernd_end_points.diminfo[1].shape;
+      if (unlikely(__pyx_t_10 < 0)) __pyx_t_11 = 1;
+    } else if (unlikely(__pyx_t_10 >= __pyx_pybuffernd_end_points.diminfo[1].shape)) __pyx_t_11 = 1;
+    if (unlikely(__pyx_t_11 != -1)) {
+      __Pyx_RaiseBufferIndexError(__pyx_t_11);
+      __PYX_ERR(0, 64, __pyx_L1_error)
     }
-    __pyx_v_y1 = (*__Pyx_BufPtrStrided2d(long *, __pyx_pybuffernd_end_points.rcbuffer->pybuffer.buf, __pyx_t_4, __pyx_pybuffernd_end_points.diminfo[0].strides, __pyx_t_5, __pyx_pybuffernd_end_points.diminfo[1].strides));
+    __pyx_v_y1 = (*__Pyx_BufPtrStrided2d(long *, __pyx_pybuffernd_end_points.rcbuffer->pybuffer.buf, __pyx_t_9, __pyx_pybuffernd_end_points.diminfo[0].strides, __pyx_t_10, __pyx_pybuffernd_end_points.diminfo[1].strides));
 
-    /* "cython_version.pyx":63
+    /* "cython_version.pyx":65
  *         x1 = end_points[k, 0]
  *         y1 = end_points[k, 1]
  *         fill_grid_with_bresenham_line(x0, y0, x1, y1, grid)             # <<<<<<<<<<<<<<
+ *     return grid
  */
+    if (!(likely(((__pyx_v_grid) == Py_None) || likely(__Pyx_TypeTest(__pyx_v_grid, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 65, __pyx_L1_error)
     (void)(__pyx_f_14cython_version_fill_grid_with_bresenham_line(__pyx_v_x0, __pyx_v_y0, __pyx_v_x1, __pyx_v_y1, ((PyArrayObject *)__pyx_v_grid)));
   }
+
+  /* "cython_version.pyx":66
+ *         y1 = end_points[k, 1]
+ *         fill_grid_with_bresenham_line(x0, y0, x1, y1, grid)
+ *     return grid             # <<<<<<<<<<<<<<
+ */
+  __Pyx_XDECREF(__pyx_r);
+  __Pyx_INCREF(__pyx_v_grid);
+  __pyx_r = __pyx_v_grid;
+  goto __pyx_L0;
 
   /* "cython_version.pyx":50
  * 
  * 
- * def fill_grid_with_bresenham_lines(np.ndarray[long, ndim=2] start_points,             # <<<<<<<<<<<<<<
- *                                    np.ndarray[long, ndim=2] end_points,
- *                                    np.ndarray[np.int32_t, ndim=2] grid):
+ * def rasterize_lines(np.ndarray[long, ndim=2] start_points,             # <<<<<<<<<<<<<<
+ *                     np.ndarray[long, ndim=2] end_points,
+ *                     tuple grid_dim) -> np.ndarray[np.int32]:
  */
 
   /* function exit code */
-  __pyx_r = Py_None; __Pyx_INCREF(Py_None);
-  goto __pyx_L0;
   __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_XDECREF(__pyx_t_2);
+  __Pyx_XDECREF(__pyx_t_3);
+  __Pyx_XDECREF(__pyx_t_4);
+  __Pyx_XDECREF(__pyx_t_5);
   { PyObject *__pyx_type, *__pyx_value, *__pyx_tb;
     __Pyx_PyThreadState_declare
     __Pyx_PyThreadState_assign
     __Pyx_ErrFetch(&__pyx_type, &__pyx_value, &__pyx_tb);
     __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_end_points.rcbuffer->pybuffer);
-    __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_grid.rcbuffer->pybuffer);
     __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_start_points.rcbuffer->pybuffer);
   __Pyx_ErrRestore(__pyx_type, __pyx_value, __pyx_tb);}
-  __Pyx_AddTraceback("cython_version.fill_grid_with_bresenham_lines", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("cython_version.rasterize_lines", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   goto __pyx_L2;
   __pyx_L0:;
   __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_end_points.rcbuffer->pybuffer);
-  __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_grid.rcbuffer->pybuffer);
   __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_start_points.rcbuffer->pybuffer);
   __pyx_L2:;
+  __Pyx_XDECREF(__pyx_v_grid);
   __Pyx_XGIVEREF(__pyx_r);
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
@@ -3383,10 +3459,12 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_cline_in_traceback, __pyx_k_cline_in_traceback, sizeof(__pyx_k_cline_in_traceback), 0, 0, 1, 1},
   {&__pyx_n_s_cython_version, __pyx_k_cython_version, sizeof(__pyx_k_cython_version), 0, 0, 1, 1},
   {&__pyx_kp_s_cython_version_pyx, __pyx_k_cython_version_pyx, sizeof(__pyx_k_cython_version_pyx), 0, 0, 1, 0},
+  {&__pyx_n_s_dtype, __pyx_k_dtype, sizeof(__pyx_k_dtype), 0, 0, 1, 1},
   {&__pyx_n_s_end_points, __pyx_k_end_points, sizeof(__pyx_k_end_points), 0, 0, 1, 1},
-  {&__pyx_n_s_fill_grid_with_bresenham_lines, __pyx_k_fill_grid_with_bresenham_lines, sizeof(__pyx_k_fill_grid_with_bresenham_lines), 0, 0, 1, 1},
   {&__pyx_n_s_grid, __pyx_k_grid, sizeof(__pyx_k_grid), 0, 0, 1, 1},
+  {&__pyx_n_s_grid_dim, __pyx_k_grid_dim, sizeof(__pyx_k_grid_dim), 0, 0, 1, 1},
   {&__pyx_n_s_import, __pyx_k_import, sizeof(__pyx_k_import), 0, 0, 1, 1},
+  {&__pyx_n_s_int32, __pyx_k_int32, sizeof(__pyx_k_int32), 0, 0, 1, 1},
   {&__pyx_n_s_k, __pyx_k_k, sizeof(__pyx_k_k), 0, 0, 1, 1},
   {&__pyx_n_s_main, __pyx_k_main, sizeof(__pyx_k_main), 0, 0, 1, 1},
   {&__pyx_n_s_name, __pyx_k_name, sizeof(__pyx_k_name), 0, 0, 1, 1},
@@ -3396,16 +3474,18 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_kp_s_numpy_core_multiarray_failed_to, __pyx_k_numpy_core_multiarray_failed_to, sizeof(__pyx_k_numpy_core_multiarray_failed_to), 0, 0, 1, 0},
   {&__pyx_kp_s_numpy_core_umath_failed_to_impor, __pyx_k_numpy_core_umath_failed_to_impor, sizeof(__pyx_k_numpy_core_umath_failed_to_impor), 0, 0, 1, 0},
   {&__pyx_n_s_range, __pyx_k_range, sizeof(__pyx_k_range), 0, 0, 1, 1},
+  {&__pyx_n_s_rasterize_lines, __pyx_k_rasterize_lines, sizeof(__pyx_k_rasterize_lines), 0, 0, 1, 1},
   {&__pyx_n_s_start_points, __pyx_k_start_points, sizeof(__pyx_k_start_points), 0, 0, 1, 1},
   {&__pyx_n_s_test, __pyx_k_test, sizeof(__pyx_k_test), 0, 0, 1, 1},
   {&__pyx_n_s_x0, __pyx_k_x0, sizeof(__pyx_k_x0), 0, 0, 1, 1},
   {&__pyx_n_s_x1, __pyx_k_x1, sizeof(__pyx_k_x1), 0, 0, 1, 1},
   {&__pyx_n_s_y0, __pyx_k_y0, sizeof(__pyx_k_y0), 0, 0, 1, 1},
   {&__pyx_n_s_y1, __pyx_k_y1, sizeof(__pyx_k_y1), 0, 0, 1, 1},
+  {&__pyx_n_s_zeros, __pyx_k_zeros, sizeof(__pyx_k_zeros), 0, 0, 1, 1},
   {0, 0, 0, 0, 0, 0, 0}
 };
 static CYTHON_SMALL_CODE int __Pyx_InitCachedBuiltins(void) {
-  __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(0, 58, __pyx_L1_error)
+  __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(0, 60, __pyx_L1_error)
   __pyx_builtin_ImportError = __Pyx_GetBuiltinName(__pyx_n_s_ImportError); if (!__pyx_builtin_ImportError) __PYX_ERR(1, 884, __pyx_L1_error)
   return 0;
   __pyx_L1_error:;
@@ -3441,14 +3521,14 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   /* "cython_version.pyx":50
  * 
  * 
- * def fill_grid_with_bresenham_lines(np.ndarray[long, ndim=2] start_points,             # <<<<<<<<<<<<<<
- *                                    np.ndarray[long, ndim=2] end_points,
- *                                    np.ndarray[np.int32_t, ndim=2] grid):
+ * def rasterize_lines(np.ndarray[long, ndim=2] start_points,             # <<<<<<<<<<<<<<
+ *                     np.ndarray[long, ndim=2] end_points,
+ *                     tuple grid_dim) -> np.ndarray[np.int32]:
  */
-  __pyx_tuple__3 = PyTuple_Pack(9, __pyx_n_s_start_points, __pyx_n_s_end_points, __pyx_n_s_grid, __pyx_n_s_k, __pyx_n_s_nrows, __pyx_n_s_x0, __pyx_n_s_y0, __pyx_n_s_x1, __pyx_n_s_y1); if (unlikely(!__pyx_tuple__3)) __PYX_ERR(0, 50, __pyx_L1_error)
+  __pyx_tuple__3 = PyTuple_Pack(10, __pyx_n_s_start_points, __pyx_n_s_end_points, __pyx_n_s_grid_dim, __pyx_n_s_k, __pyx_n_s_nrows, __pyx_n_s_x0, __pyx_n_s_y0, __pyx_n_s_x1, __pyx_n_s_y1, __pyx_n_s_grid); if (unlikely(!__pyx_tuple__3)) __PYX_ERR(0, 50, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__3);
   __Pyx_GIVEREF(__pyx_tuple__3);
-  __pyx_codeobj__4 = (PyObject*)__Pyx_PyCode_New(3, 0, 9, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__3, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_cython_version_pyx, __pyx_n_s_fill_grid_with_bresenham_lines, 50, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__4)) __PYX_ERR(0, 50, __pyx_L1_error)
+  __pyx_codeobj__4 = (PyObject*)__Pyx_PyCode_New(3, 0, 10, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__3, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_cython_version_pyx, __pyx_n_s_rasterize_lines, 50, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__4)) __PYX_ERR(0, 50, __pyx_L1_error)
   __Pyx_RefNannyFinishContext();
   return 0;
   __pyx_L1_error:;
@@ -3766,13 +3846,13 @@ if (!__Pyx_RefNanny) {
   /* "cython_version.pyx":50
  * 
  * 
- * def fill_grid_with_bresenham_lines(np.ndarray[long, ndim=2] start_points,             # <<<<<<<<<<<<<<
- *                                    np.ndarray[long, ndim=2] end_points,
- *                                    np.ndarray[np.int32_t, ndim=2] grid):
+ * def rasterize_lines(np.ndarray[long, ndim=2] start_points,             # <<<<<<<<<<<<<<
+ *                     np.ndarray[long, ndim=2] end_points,
+ *                     tuple grid_dim) -> np.ndarray[np.int32]:
  */
-  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_14cython_version_1fill_grid_with_bresenham_lines, NULL, __pyx_n_s_cython_version); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 50, __pyx_L1_error)
+  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_14cython_version_1rasterize_lines, NULL, __pyx_n_s_cython_version); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 50, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_fill_grid_with_bresenham_lines, __pyx_t_1) < 0) __PYX_ERR(0, 50, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_rasterize_lines, __pyx_t_1) < 0) __PYX_ERR(0, 50, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
   /* "cython_version.pyx":1
@@ -4650,10 +4730,104 @@ bad:
     return 0;
 }
 
+/* PyDictVersioning */
+  #if CYTHON_USE_DICT_VERSIONS && CYTHON_USE_TYPE_SLOTS
+static CYTHON_INLINE PY_UINT64_T __Pyx_get_tp_dict_version(PyObject *obj) {
+    PyObject *dict = Py_TYPE(obj)->tp_dict;
+    return likely(dict) ? __PYX_GET_DICT_VERSION(dict) : 0;
+}
+static CYTHON_INLINE PY_UINT64_T __Pyx_get_object_dict_version(PyObject *obj) {
+    PyObject **dictptr = NULL;
+    Py_ssize_t offset = Py_TYPE(obj)->tp_dictoffset;
+    if (offset) {
+#if CYTHON_COMPILING_IN_CPYTHON
+        dictptr = (likely(offset > 0)) ? (PyObject **) ((char *)obj + offset) : _PyObject_GetDictPtr(obj);
+#else
+        dictptr = _PyObject_GetDictPtr(obj);
+#endif
+    }
+    return (dictptr && *dictptr) ? __PYX_GET_DICT_VERSION(*dictptr) : 0;
+}
+static CYTHON_INLINE int __Pyx_object_dict_version_matches(PyObject* obj, PY_UINT64_T tp_dict_version, PY_UINT64_T obj_dict_version) {
+    PyObject *dict = Py_TYPE(obj)->tp_dict;
+    if (unlikely(!dict) || unlikely(tp_dict_version != __PYX_GET_DICT_VERSION(dict)))
+        return 0;
+    return obj_dict_version == __Pyx_get_object_dict_version(obj);
+}
+#endif
+
+/* GetModuleGlobalName */
+  #if CYTHON_USE_DICT_VERSIONS
+static PyObject *__Pyx__GetModuleGlobalName(PyObject *name, PY_UINT64_T *dict_version, PyObject **dict_cached_value)
+#else
+static CYTHON_INLINE PyObject *__Pyx__GetModuleGlobalName(PyObject *name)
+#endif
+{
+    PyObject *result;
+#if !CYTHON_AVOID_BORROWED_REFS
+#if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030500A1
+    result = _PyDict_GetItem_KnownHash(__pyx_d, name, ((PyASCIIObject *) name)->hash);
+    __PYX_UPDATE_DICT_CACHE(__pyx_d, result, *dict_cached_value, *dict_version)
+    if (likely(result)) {
+        return __Pyx_NewRef(result);
+    } else if (unlikely(PyErr_Occurred())) {
+        return NULL;
+    }
+#else
+    result = PyDict_GetItem(__pyx_d, name);
+    __PYX_UPDATE_DICT_CACHE(__pyx_d, result, *dict_cached_value, *dict_version)
+    if (likely(result)) {
+        return __Pyx_NewRef(result);
+    }
+#endif
+#else
+    result = PyObject_GetItem(__pyx_d, name);
+    __PYX_UPDATE_DICT_CACHE(__pyx_d, result, *dict_cached_value, *dict_version)
+    if (likely(result)) {
+        return __Pyx_NewRef(result);
+    }
+    PyErr_Clear();
+#endif
+    return __Pyx_GetBuiltinName(name);
+}
+
+/* PyObjectCall */
+  #if CYTHON_COMPILING_IN_CPYTHON
+static CYTHON_INLINE PyObject* __Pyx_PyObject_Call(PyObject *func, PyObject *arg, PyObject *kw) {
+    PyObject *result;
+    ternaryfunc call = Py_TYPE(func)->tp_call;
+    if (unlikely(!call))
+        return PyObject_Call(func, arg, kw);
+    if (unlikely(Py_EnterRecursiveCall((char*)" while calling a Python object")))
+        return NULL;
+    result = (*call)(func, arg, kw);
+    Py_LeaveRecursiveCall();
+    if (unlikely(!result) && unlikely(!PyErr_Occurred())) {
+        PyErr_SetString(
+            PyExc_SystemError,
+            "NULL result without error in PyObject_Call");
+    }
+    return result;
+}
+#endif
+
 /* BufferIndexError */
   static void __Pyx_RaiseBufferIndexError(int axis) {
   PyErr_Format(PyExc_IndexError,
      "Out of bounds on buffer access (axis %d)", axis);
+}
+
+/* ExtTypeTest */
+  static CYTHON_INLINE int __Pyx_TypeTest(PyObject *obj, PyTypeObject *type) {
+    if (unlikely(!type)) {
+        PyErr_SetString(PyExc_SystemError, "Missing type object");
+        return 0;
+    }
+    if (likely(__Pyx_TypeCheck(obj, type)))
+        return 1;
+    PyErr_Format(PyExc_TypeError, "Cannot convert %.200s to %.200s",
+                 Py_TYPE(obj)->tp_name, type->tp_name);
+    return 0;
 }
 
 /* GetTopmostException */
@@ -4810,26 +4984,6 @@ bad:
     Py_XDECREF(local_tb);
     return -1;
 }
-
-/* PyObjectCall */
-  #if CYTHON_COMPILING_IN_CPYTHON
-static CYTHON_INLINE PyObject* __Pyx_PyObject_Call(PyObject *func, PyObject *arg, PyObject *kw) {
-    PyObject *result;
-    ternaryfunc call = Py_TYPE(func)->tp_call;
-    if (unlikely(!call))
-        return PyObject_Call(func, arg, kw);
-    if (unlikely(Py_EnterRecursiveCall((char*)" while calling a Python object")))
-        return NULL;
-    result = (*call)(func, arg, kw);
-    Py_LeaveRecursiveCall();
-    if (unlikely(!result) && unlikely(!PyErr_Occurred())) {
-        PyErr_SetString(
-            PyExc_SystemError,
-            "NULL result without error in PyObject_Call");
-    }
-    return result;
-}
-#endif
 
 /* RaiseException */
   #if PY_MAJOR_VERSION < 3
@@ -5133,32 +5287,6 @@ bad:
     Py_XDECREF(empty_dict);
     return module;
 }
-
-/* PyDictVersioning */
-  #if CYTHON_USE_DICT_VERSIONS && CYTHON_USE_TYPE_SLOTS
-static CYTHON_INLINE PY_UINT64_T __Pyx_get_tp_dict_version(PyObject *obj) {
-    PyObject *dict = Py_TYPE(obj)->tp_dict;
-    return likely(dict) ? __PYX_GET_DICT_VERSION(dict) : 0;
-}
-static CYTHON_INLINE PY_UINT64_T __Pyx_get_object_dict_version(PyObject *obj) {
-    PyObject **dictptr = NULL;
-    Py_ssize_t offset = Py_TYPE(obj)->tp_dictoffset;
-    if (offset) {
-#if CYTHON_COMPILING_IN_CPYTHON
-        dictptr = (likely(offset > 0)) ? (PyObject **) ((char *)obj + offset) : _PyObject_GetDictPtr(obj);
-#else
-        dictptr = _PyObject_GetDictPtr(obj);
-#endif
-    }
-    return (dictptr && *dictptr) ? __PYX_GET_DICT_VERSION(*dictptr) : 0;
-}
-static CYTHON_INLINE int __Pyx_object_dict_version_matches(PyObject* obj, PY_UINT64_T tp_dict_version, PY_UINT64_T obj_dict_version) {
-    PyObject *dict = Py_TYPE(obj)->tp_dict;
-    if (unlikely(!dict) || unlikely(tp_dict_version != __PYX_GET_DICT_VERSION(dict)))
-        return 0;
-    return obj_dict_version == __Pyx_get_object_dict_version(obj);
-}
-#endif
 
 /* CLineInTraceback */
   #ifndef CYTHON_CLINE_IN_TRACEBACK

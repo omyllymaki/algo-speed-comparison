@@ -15,36 +15,31 @@ def comparison():
 
     x_max = max(max_start_points_int[0], max_end_points_int[0]) + 1
     y_max = max(max_start_points_int[1], max_end_points_int[1]) + 1
+    grid_dim = (x_max, y_max)
 
-    grid = np.zeros((x_max, y_max), dtype=np.int32)
-
-    print(f"grid size: {grid.shape}")
+    print(f"grid size: {grid_dim}")
 
     methods = {
-        "python": python_version.fill_grid_with_bresenham_lines,
-        "numba": numba_version.fill_grid_with_bresenham_lines,
-        "cython": cython_version.fill_grid_with_bresenham_lines
+        "python": python_version.rasterize_lines,
+        "numba": numba_version.rasterize_lines,
+        "cython": cython_version.rasterize_lines
     }
 
     # Run numba version once before analysis to compile
-    t = grid.copy()
-    numba_version.fill_grid_with_bresenham_lines(start_points_int[:2], end_points_int[:2], t)
+    numba_version.rasterize_lines(start_points_int[:2], end_points_int[:2], grid_dim)
 
     for method_name, method in methods.items():
 
-        grid1 = grid.copy()
-        grid2 = grid.copy()
-
         t1 = time.time()
-        method(start_points_int, end_points_int, grid1)
+        method(start_points_int, end_points_int, grid_dim)
         t2 = time.time()
         n_lines_per_second = int(start_points_int.shape[0] / (t2 - t1))
         print(f"Version {method_name}: {n_lines_per_second} lines per second")
 
-        method(start_points_int[:10], end_points_int[:10], grid2)
+        grid = method(start_points_int[:10], end_points_int[:10], grid_dim)
 
         plt.figure()
-        plt.imshow(grid2.T > 0, cmap="gray", aspect="auto")
+        plt.imshow(grid.T > 0, cmap="gray", aspect="auto")
         plt.gca().invert_yaxis()
         sps = start_points_int[:10]
         eps = end_points_int[:10]

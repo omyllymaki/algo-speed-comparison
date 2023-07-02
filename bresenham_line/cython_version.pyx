@@ -47,11 +47,13 @@ cdef int fill_grid_with_bresenham_line(unsigned x0, unsigned y0,
 
 
 
-def fill_grid_with_bresenham_lines(np.ndarray[long, ndim=2] start_points,
-                                   np.ndarray[long, ndim=2] end_points,
-                                   np.ndarray[np.int32_t, ndim=2] grid):
+def rasterize_lines(np.ndarray[long, ndim=2] start_points,
+                    np.ndarray[long, ndim=2] end_points,
+                    tuple grid_dim) -> np.ndarray[np.int32]:
     cdef unsigned k, nrows
-    cdef int x0, y0, x1, y1
+    cdef unsigned x0, y0, x1, y1
+
+    grid = np.zeros(grid_dim, dtype=np.int32)
 
     nrows = start_points.shape[0]
 
@@ -61,3 +63,4 @@ def fill_grid_with_bresenham_lines(np.ndarray[long, ndim=2] start_points,
         x1 = end_points[k, 0]
         y1 = end_points[k, 1]
         fill_grid_with_bresenham_line(x0, y0, x1, y1, grid)
+    return grid

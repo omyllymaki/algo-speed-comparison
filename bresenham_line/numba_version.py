@@ -1,3 +1,4 @@
+import numpy as np
 from numba import jit
 
 
@@ -27,8 +28,10 @@ def fill_grid_with_bresenham_line(x0, y0, x1, y1, grid):
 
 
 @jit(nopython=True)
-def fill_grid_with_bresenham_lines(start_points, end_points, grid):
+def rasterize_lines(start_points, end_points, grid_dim):
+    grid = np.zeros(grid_dim, dtype=np.uint)
     for i in range(start_points.shape[0]):
         sp = start_points[i]
         ep = end_points[i]
         fill_grid_with_bresenham_line(sp[0], sp[1], ep[0], ep[1], grid)
+    return grid

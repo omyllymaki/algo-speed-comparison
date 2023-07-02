@@ -43,12 +43,14 @@ void bresemham_line::fill_grid_with_bresenham_line(size_t x0, size_t y0, size_t 
     }
 }
 
-void bresemham_line::fill_grid_with_bresenham_lines(const Eigen::MatrixX2i &start_points,
-                                                    const Eigen::MatrixX2i &end_points,
-                                                    Eigen::MatrixXi &grid)
+Eigen::MatrixXi bresemham_line::rasterize_lines(const Eigen::MatrixX2i &start_points,
+                                                const Eigen::MatrixX2i &end_points,
+                                                const std::pair<size_t, size_t> &grid_dim)
 {
-    size_t nRows = start_points.rows();
-    for (size_t i = 0; i < nRows; i++)
+    size_t n_rows = start_points.rows();
+    Eigen::MatrixXi grid;
+    grid.resize(grid_dim.first, grid_dim.second);
+    for (size_t i = 0; i < n_rows; i++)
     {
         size_t x0 = start_points.coeff(i, 0);
         size_t y0 = start_points.coeff(i, 1);
@@ -56,4 +58,6 @@ void bresemham_line::fill_grid_with_bresenham_lines(const Eigen::MatrixX2i &star
         size_t y1 = end_points.coeff(i, 1);
         fill_grid_with_bresenham_line(x0, y0, x1, y1, grid);
     }
+
+    return grid;
 }

@@ -53,14 +53,14 @@ MatrixXd readMatrix(const char *filename)
 
 int main()
 {
-    auto start_points = readMatrix("start_points_int.txt");
-    auto end_points = readMatrix("end_points_int.txt");
+    auto start_points = readMatrix("../../data/start_points_int.txt");
+    auto end_points = readMatrix("../../data/end_points_int.txt");
 
     MatrixXi start_points_int = start_points.cast <int> ();
     MatrixXi end_points_int = end_points.cast <int> ();
 
     Eigen::MatrixXi grid;
-    grid.resize(135, 135);
+    grid.resize(134, 134);
 
     auto startTime = std::chrono::high_resolution_clock::now();
     bresemham_line::fill_grid_with_bresenham_lines(start_points_int, end_points_int, grid);

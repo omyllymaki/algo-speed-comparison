@@ -1743,6 +1743,7 @@ static PyTypeObject *__pyx_ptype_5numpy_ufunc = 0;
 /* Module declarations from 'cython_version' */
 static int __pyx_f_14cython_version_fill_grid_with_bresenham_line(unsigned int, unsigned int, unsigned int, unsigned int, PyArrayObject *); /*proto*/
 static __Pyx_TypeInfo __Pyx_TypeInfo_nn___pyx_t_5numpy_int32_t = { "int32_t", NULL, sizeof(__pyx_t_5numpy_int32_t), { 0 }, 0, IS_UNSIGNED(__pyx_t_5numpy_int32_t) ? 'U' : 'I', IS_UNSIGNED(__pyx_t_5numpy_int32_t), 0 };
+static __Pyx_TypeInfo __Pyx_TypeInfo_long = { "long", NULL, sizeof(long), { 0 }, 0, IS_UNSIGNED(long) ? 'U' : 'I', IS_UNSIGNED(long), 0 };
 #define __Pyx_MODULE_NAME "cython_version"
 extern int __pyx_module_is_main_cython_version;
 int __pyx_module_is_main_cython_version = 0;
@@ -2203,8 +2204,8 @@ static int __pyx_f_14cython_version_fill_grid_with_bresenham_line(unsigned int _
 /* "cython_version.pyx":50
  * 
  * 
- * def fill_grid_with_bresenham_lines(np.ndarray[np.int32_t, ndim=2] start_points,             # <<<<<<<<<<<<<<
- *                                    np.ndarray[np.int32_t, ndim=2] end_points,
+ * def fill_grid_with_bresenham_lines(np.ndarray[long, ndim=2] start_points,             # <<<<<<<<<<<<<<
+ *                                    np.ndarray[long, ndim=2] end_points,
  *                                    np.ndarray[np.int32_t, ndim=2] grid):
  */
 
@@ -2330,12 +2331,12 @@ static PyObject *__pyx_pf_14cython_version_fill_grid_with_bresenham_lines(CYTHON
   __pyx_pybuffernd_grid.rcbuffer = &__pyx_pybuffer_grid;
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_start_points.rcbuffer->pybuffer, (PyObject*)__pyx_v_start_points, &__Pyx_TypeInfo_nn___pyx_t_5numpy_int32_t, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) __PYX_ERR(0, 50, __pyx_L1_error)
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_start_points.rcbuffer->pybuffer, (PyObject*)__pyx_v_start_points, &__Pyx_TypeInfo_long, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) __PYX_ERR(0, 50, __pyx_L1_error)
   }
   __pyx_pybuffernd_start_points.diminfo[0].strides = __pyx_pybuffernd_start_points.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_start_points.diminfo[0].shape = __pyx_pybuffernd_start_points.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_start_points.diminfo[1].strides = __pyx_pybuffernd_start_points.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_start_points.diminfo[1].shape = __pyx_pybuffernd_start_points.rcbuffer->pybuffer.shape[1];
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_end_points.rcbuffer->pybuffer, (PyObject*)__pyx_v_end_points, &__Pyx_TypeInfo_nn___pyx_t_5numpy_int32_t, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) __PYX_ERR(0, 50, __pyx_L1_error)
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_end_points.rcbuffer->pybuffer, (PyObject*)__pyx_v_end_points, &__Pyx_TypeInfo_long, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) __PYX_ERR(0, 50, __pyx_L1_error)
   }
   __pyx_pybuffernd_end_points.diminfo[0].strides = __pyx_pybuffernd_end_points.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_end_points.diminfo[0].shape = __pyx_pybuffernd_end_points.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_end_points.diminfo[1].strides = __pyx_pybuffernd_end_points.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_end_points.diminfo[1].shape = __pyx_pybuffernd_end_points.rcbuffer->pybuffer.shape[1];
   {
@@ -2384,7 +2385,7 @@ static PyObject *__pyx_pf_14cython_version_fill_grid_with_bresenham_lines(CYTHON
       __Pyx_RaiseBufferIndexError(__pyx_t_6);
       __PYX_ERR(0, 59, __pyx_L1_error)
     }
-    __pyx_v_x0 = (*__Pyx_BufPtrStrided2d(__pyx_t_5numpy_int32_t *, __pyx_pybuffernd_start_points.rcbuffer->pybuffer.buf, __pyx_t_4, __pyx_pybuffernd_start_points.diminfo[0].strides, __pyx_t_5, __pyx_pybuffernd_start_points.diminfo[1].strides));
+    __pyx_v_x0 = (*__Pyx_BufPtrStrided2d(long *, __pyx_pybuffernd_start_points.rcbuffer->pybuffer.buf, __pyx_t_4, __pyx_pybuffernd_start_points.diminfo[0].strides, __pyx_t_5, __pyx_pybuffernd_start_points.diminfo[1].strides));
 
     /* "cython_version.pyx":60
  *     for k in range(nrows):
@@ -2405,7 +2406,7 @@ static PyObject *__pyx_pf_14cython_version_fill_grid_with_bresenham_lines(CYTHON
       __Pyx_RaiseBufferIndexError(__pyx_t_6);
       __PYX_ERR(0, 60, __pyx_L1_error)
     }
-    __pyx_v_y0 = (*__Pyx_BufPtrStrided2d(__pyx_t_5numpy_int32_t *, __pyx_pybuffernd_start_points.rcbuffer->pybuffer.buf, __pyx_t_4, __pyx_pybuffernd_start_points.diminfo[0].strides, __pyx_t_5, __pyx_pybuffernd_start_points.diminfo[1].strides));
+    __pyx_v_y0 = (*__Pyx_BufPtrStrided2d(long *, __pyx_pybuffernd_start_points.rcbuffer->pybuffer.buf, __pyx_t_4, __pyx_pybuffernd_start_points.diminfo[0].strides, __pyx_t_5, __pyx_pybuffernd_start_points.diminfo[1].strides));
 
     /* "cython_version.pyx":61
  *         x0 = start_points[k, 0]
@@ -2426,7 +2427,7 @@ static PyObject *__pyx_pf_14cython_version_fill_grid_with_bresenham_lines(CYTHON
       __Pyx_RaiseBufferIndexError(__pyx_t_6);
       __PYX_ERR(0, 61, __pyx_L1_error)
     }
-    __pyx_v_x1 = (*__Pyx_BufPtrStrided2d(__pyx_t_5numpy_int32_t *, __pyx_pybuffernd_end_points.rcbuffer->pybuffer.buf, __pyx_t_4, __pyx_pybuffernd_end_points.diminfo[0].strides, __pyx_t_5, __pyx_pybuffernd_end_points.diminfo[1].strides));
+    __pyx_v_x1 = (*__Pyx_BufPtrStrided2d(long *, __pyx_pybuffernd_end_points.rcbuffer->pybuffer.buf, __pyx_t_4, __pyx_pybuffernd_end_points.diminfo[0].strides, __pyx_t_5, __pyx_pybuffernd_end_points.diminfo[1].strides));
 
     /* "cython_version.pyx":62
  *         y0 = start_points[k, 1]
@@ -2446,7 +2447,7 @@ static PyObject *__pyx_pf_14cython_version_fill_grid_with_bresenham_lines(CYTHON
       __Pyx_RaiseBufferIndexError(__pyx_t_6);
       __PYX_ERR(0, 62, __pyx_L1_error)
     }
-    __pyx_v_y1 = (*__Pyx_BufPtrStrided2d(__pyx_t_5numpy_int32_t *, __pyx_pybuffernd_end_points.rcbuffer->pybuffer.buf, __pyx_t_4, __pyx_pybuffernd_end_points.diminfo[0].strides, __pyx_t_5, __pyx_pybuffernd_end_points.diminfo[1].strides));
+    __pyx_v_y1 = (*__Pyx_BufPtrStrided2d(long *, __pyx_pybuffernd_end_points.rcbuffer->pybuffer.buf, __pyx_t_4, __pyx_pybuffernd_end_points.diminfo[0].strides, __pyx_t_5, __pyx_pybuffernd_end_points.diminfo[1].strides));
 
     /* "cython_version.pyx":63
  *         x1 = end_points[k, 0]
@@ -2459,8 +2460,8 @@ static PyObject *__pyx_pf_14cython_version_fill_grid_with_bresenham_lines(CYTHON
   /* "cython_version.pyx":50
  * 
  * 
- * def fill_grid_with_bresenham_lines(np.ndarray[np.int32_t, ndim=2] start_points,             # <<<<<<<<<<<<<<
- *                                    np.ndarray[np.int32_t, ndim=2] end_points,
+ * def fill_grid_with_bresenham_lines(np.ndarray[long, ndim=2] start_points,             # <<<<<<<<<<<<<<
+ *                                    np.ndarray[long, ndim=2] end_points,
  *                                    np.ndarray[np.int32_t, ndim=2] grid):
  */
 
@@ -3440,8 +3441,8 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   /* "cython_version.pyx":50
  * 
  * 
- * def fill_grid_with_bresenham_lines(np.ndarray[np.int32_t, ndim=2] start_points,             # <<<<<<<<<<<<<<
- *                                    np.ndarray[np.int32_t, ndim=2] end_points,
+ * def fill_grid_with_bresenham_lines(np.ndarray[long, ndim=2] start_points,             # <<<<<<<<<<<<<<
+ *                                    np.ndarray[long, ndim=2] end_points,
  *                                    np.ndarray[np.int32_t, ndim=2] grid):
  */
   __pyx_tuple__3 = PyTuple_Pack(9, __pyx_n_s_start_points, __pyx_n_s_end_points, __pyx_n_s_grid, __pyx_n_s_k, __pyx_n_s_nrows, __pyx_n_s_x0, __pyx_n_s_y0, __pyx_n_s_x1, __pyx_n_s_y1); if (unlikely(!__pyx_tuple__3)) __PYX_ERR(0, 50, __pyx_L1_error)
@@ -3765,8 +3766,8 @@ if (!__Pyx_RefNanny) {
   /* "cython_version.pyx":50
  * 
  * 
- * def fill_grid_with_bresenham_lines(np.ndarray[np.int32_t, ndim=2] start_points,             # <<<<<<<<<<<<<<
- *                                    np.ndarray[np.int32_t, ndim=2] end_points,
+ * def fill_grid_with_bresenham_lines(np.ndarray[long, ndim=2] start_points,             # <<<<<<<<<<<<<<
+ *                                    np.ndarray[long, ndim=2] end_points,
  *                                    np.ndarray[np.int32_t, ndim=2] grid):
  */
   __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_14cython_version_1fill_grid_with_bresenham_lines, NULL, __pyx_n_s_cython_version); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 50, __pyx_L1_error)

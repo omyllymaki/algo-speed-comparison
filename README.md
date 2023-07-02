@@ -1,6 +1,6 @@
 # algo-speed-comparison
 
-python: 1351 lines per second
-python+numba: 3493797 lines per second
-python+cython: 1611984 lines per second
-C++: 5839416 lines per second
+python: 2093 lines per second
+numba: 4779288 lines per second
+cython: 1359632 lines per second
+C++: 6270378 lines per second

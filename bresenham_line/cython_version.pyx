@@ -47,8 +47,8 @@ cdef int fill_grid_with_bresenham_line(unsigned x0, unsigned y0,
 
 
 
-def fill_grid_with_bresenham_lines(np.ndarray[np.int32_t, ndim=2] start_points,
-                                   np.ndarray[np.int32_t, ndim=2] end_points,
+def fill_grid_with_bresenham_lines(np.ndarray[long, ndim=2] start_points,
+                                   np.ndarray[long, ndim=2] end_points,
                                    np.ndarray[np.int32_t, ndim=2] grid):
     cdef unsigned k, nrows
     cdef int x0, y0, x1, y1

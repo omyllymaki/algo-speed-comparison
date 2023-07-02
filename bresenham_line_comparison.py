@@ -5,6 +5,10 @@ from matplotlib import pyplot as plt
 
 from bresenham_line import python_version, numba_version, cython_version
 
+import sys
+sys.path.append("/home/ossi/Repos/Personal/algo-speed-comparison/bresenham_line/build")
+from example import rasterize_lines
+
 
 def comparison():
     start_points_int = np.loadtxt("data/start_points_int.txt").astype(int)
@@ -22,7 +26,8 @@ def comparison():
     methods = {
         "python": python_version.rasterize_lines,
         "numba": numba_version.rasterize_lines,
-        "cython": cython_version.rasterize_lines
+        "cython": cython_version.rasterize_lines,
+        "C++ binding": rasterize_lines
     }
 
     # Run numba version once before analysis to compile

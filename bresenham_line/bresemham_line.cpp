@@ -2,7 +2,7 @@
 #include <iostream>
 #include <cmath>
 
-void bresemham_line::fill_grid_with_bresenham_line(size_t x0, size_t y0, size_t x1, size_t y1, Eigen::MatrixXi &grid)
+void fill_grid_with_bresenham_line(size_t x0, size_t y0, size_t x1, size_t y1, Eigen::MatrixXi &grid)
 {
     int e2, sx, sy, error;
     int dx, dy;
@@ -43,9 +43,9 @@ void bresemham_line::fill_grid_with_bresenham_line(size_t x0, size_t y0, size_t 
     }
 }
 
-Eigen::MatrixXi bresemham_line::rasterize_lines(const Eigen::MatrixX2i &start_points,
-                                                const Eigen::MatrixX2i &end_points,
-                                                const std::pair<size_t, size_t> &grid_dim)
+Eigen::MatrixXi rasterize_lines(const Eigen::MatrixX2i &start_points,
+                                const Eigen::MatrixX2i &end_points,
+                                const std::pair<size_t, size_t> &grid_dim)
 {
     size_t n_rows = start_points.rows();
     Eigen::MatrixXi grid;

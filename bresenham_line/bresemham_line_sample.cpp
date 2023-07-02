@@ -60,7 +60,7 @@ int main()
     MatrixXi end_points_int = end_points.cast<int>();
 
     auto start_time = std::chrono::high_resolution_clock::now();
-    auto grid = bresemham_line::rasterize_lines(start_points_int, end_points_int, {134, 134});
+    auto grid = rasterize_lines(start_points_int, end_points_int, {134, 134});
     auto end_time = std::chrono::high_resolution_clock::now();
     auto duration = std::chrono::duration_cast<std::chrono::microseconds>(end_time - start_time).count() / 1000000.0;
     size_t n_lines_per_second = start_points_int.rows() / duration;

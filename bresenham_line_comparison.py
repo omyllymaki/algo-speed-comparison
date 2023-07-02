@@ -6,8 +6,10 @@ from matplotlib import pyplot as plt
 from bresenham_line.cython.line_rasterization import rasterize_lines as rasterize_lines_cython
 from bresenham_line.numba.line_rasterization import rasterize_lines as rasterize_lines_numba
 from bresenham_line.python.line_rasterization import rasterize_lines as rasterize_lines_py
+from bresenham_line.scikit_image.line_rasterization import rasterize_lines as rasterize_lines_skimage
 
 import sys
+
 sys.path.append("bresenham_line/c++/build")
 from line_rasterization_module import rasterize_lines as rasterize_lines_cplusplus
 
@@ -26,10 +28,11 @@ def comparison():
     print(f"grid size: {grid_dim}")
 
     methods = {
-        "python": rasterize_lines_py,
+        "C++ python binding": rasterize_lines_cplusplus,
         "numba": rasterize_lines_numba,
         "cython": rasterize_lines_cython,
-        "C++ binding": rasterize_lines_cplusplus
+        "skimage": rasterize_lines_skimage,
+        "python": rasterize_lines_py,
     }
 
     # Run numba version once before analysis to compile
